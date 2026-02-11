@@ -1,0 +1,314 @@
+# Frontier Market Intelligence Agent Configuration
+
+llm:
+  # Complex reasoning (Signal Extractor, Competitive Reasoning, Copilot formatting)
+  complex_model:
+    provider: anthropic
+    model: claude-sonnet-4-5-20250929
+    temperature: 0.3
+    max_tokens: 4096
+
+  # Simple tasks (Source Scout, Content Harvester classification, Copilot routing)
+  simple_model:
+    provider: openai
+    model: gpt-4o-mini
+    temperature: 0.5
+    max_tokens: 2048
+
+  fallback_enabled: true
+  retry_attempts: 3
+
+storage:
+  database:
+    path: ./data/events.db
+    echo_sql: false
+
+  vector_store:
+    path: ./data/vector_store
+    collection_name: market_events
+    embedding_model: text-embedding-3-small
+
+  memory:
+    provider_profiles_enabled: true
+    auto_update_profiles: true
+
+external_apis:
+  artificial_analysis:
+    enabled: true
+    base_url: https://artificialanalysis.ai/api/v2
+    endpoints:
+      llms: /data/llms/models
+      text_to_image: /data/media/text-to-image
+      text_to_speech: /data/media/text-to-speech
+      text_to_video: /data/media/text-to-video
+    rate_limit: 1000  # requests per day (free tier)
+    poll_frequency: daily  # How often to check for updates
+    attribution: https://artificialanalysis.ai/
+
+agents:
+  source_scout:
+    enabled: true
+
+    # Multi-query discovery (runs multiple searches per provider, aggregates results)
+    search_queries:
+      openai:
+        domain: openai.com
+        proxy_domains:  # Use Fortune when openai.com blocks scraping
+          - fortune.com
+        days_back: 90
+        queries:
+          # Core product & platform
+          - query: "OpenAI GPT model release"
+            category: "technical_capabilities"
+            weight: 1.0
+          - query: "OpenAI API update platform"
+            category: "technical_capabilities"
+            weight: 0.9
+          - query: "OpenAI partnership announcement"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "OpenAI safety research alignment"
+            category: "alignment"
+            weight: 0.8
+          - query: "OpenAI infrastructure scale"
+            category: "technical_capabilities"
+            weight: 0.7
+          # Domain-specific applications
+          - query: "OpenAI global health"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "OpenAI healthcare medical"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "OpenAI education schools"
+            category: "education_influence"
+            weight: 0.9
+          - query: "OpenAI global development"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "OpenAI agriculture farming"
+            category: "market_shaping"
+            weight: 0.8
+
+      anthropic:
+        domain: anthropic.com
+        days_back: 30
+        queries:
+          # Core product & platform
+          - query: "Anthropic Claude model release"
+            category: "technical_capabilities"
+            weight: 1.0
+          - query: "Anthropic API update"
+            category: "technical_capabilities"
+            weight: 0.9
+          - query: "Anthropic partnership collaboration"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "Anthropic Constitutional AI safety"
+            category: "alignment"
+            weight: 0.8
+          - query: "Anthropic research"
+            category: "alignment"
+            weight: 0.7
+          # Domain-specific applications
+          - query: "Anthropic global health"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "Anthropic healthcare medical"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "Anthropic education schools"
+            category: "education_influence"
+            weight: 0.9
+          - query: "Anthropic global development"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "Anthropic agriculture farming"
+            category: "market_shaping"
+            weight: 0.8
+
+      google:
+        domain: blog.google
+        days_back: 30
+        queries:
+          # Core product & platform
+          - query: "Google Gemini model update"
+            category: "technical_capabilities"
+            weight: 1.0
+          - query: "Google Cloud AI platform"
+            category: "technical_capabilities"
+            weight: 0.9
+          - query: "Google AI partnership"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "Google AI responsibility ethics"
+            category: "alignment"
+            weight: 0.8
+          - query: "Google AI infrastructure TPU"
+            category: "technical_capabilities"
+            weight: 0.7
+          # Domain-specific applications
+          - query: "Google global health"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "Google healthcare medical AI"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "Google education schools classroom"
+            category: "education_influence"
+            weight: 0.9
+          - query: "Google global development"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "Google agriculture farming AI"
+            category: "market_shaping"
+            weight: 0.8
+
+      microsoft:
+        domain: blogs.microsoft.com
+        days_back: 30
+        queries:
+          # Core product & platform
+          - query: "Microsoft Azure AI model"
+            category: "technical_capabilities"
+            weight: 1.0
+          - query: "Microsoft Copilot update"
+            category: "technical_capabilities"
+            weight: 0.9
+          - query: "Microsoft AI partnership"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "Microsoft responsible AI"
+            category: "alignment"
+            weight: 0.8
+          - query: "Microsoft AI infrastructure datacenter"
+            category: "technical_capabilities"
+            weight: 0.7
+          # Domain-specific applications
+          - query: "Microsoft global health"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "Microsoft healthcare medical AI"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "Microsoft education schools"
+            category: "education_influence"
+            weight: 0.9
+          - query: "Microsoft global development"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "Microsoft agriculture farming"
+            category: "market_shaping"
+            weight: 0.8
+
+      meta:
+        domain: ai.meta.com
+        days_back: 30
+        queries:
+          # Core product & platform
+          - query: "Meta Llama model release"
+            category: "technical_capabilities"
+            weight: 1.0
+          - query: "Meta AI research"
+            category: "technical_capabilities"
+            weight: 0.9
+          - query: "Meta open source AI"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "Meta AI safety"
+            category: "alignment"
+            weight: 0.7
+          - query: "Meta AI infrastructure"
+            category: "technical_capabilities"
+            weight: 0.7
+          # Domain-specific applications
+          - query: "Meta global health"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "Meta healthcare medical AI"
+            category: "market_shaping"
+            weight: 0.9
+          - query: "Meta education schools"
+            category: "education_influence"
+            weight: 0.9
+          - query: "Meta global development"
+            category: "market_shaping"
+            weight: 0.8
+          - query: "Meta agriculture farming AI"
+            category: "market_shaping"
+            weight: 0.8
+
+    # Scoring thresholds for URL filtering
+    scoring:
+      min_combined_score: 5.0  # Out of 10
+      high_priority_threshold: 7.0
+      multi_query_bonus: 1.0  # Boost if same URL found by multiple queries
+
+    # RSS feeds (for validation and freshness checking)
+    rss_feeds:
+      openai: https://openai.com/news/rss.xml
+      anthropic: https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml
+      google: https://research.google/blog/rss
+      microsoft: https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=AIPlatformBlog
+      meta: https://research.facebook.com/feed
+
+    # Legacy homepage URLs (kept for reference)
+    default_sources:
+      - https://openai.com/blog
+      - https://www.anthropic.com/news
+      - https://blog.google/technology/ai/
+      - https://blogs.microsoft.com/ai/
+      - https://ai.meta.com/blog/
+
+    # API sources (structured data, not web pages)
+    api_sources:
+      - name: artificial_analysis
+        type: api
+        priority: high
+
+  content_harvester:
+    enabled: true
+    user_agent: "Frontier-Market-Intelligence-Agent/1.0"
+    timeout_seconds: 30
+    significance_thresholds:
+      min_for_extraction: 6
+      min_for_storage: 4
+      high_priority: 8
+
+  signal_extractor:
+    enabled: true
+    min_confidence_threshold: 0.7
+
+  competitive_reasoning:
+    enabled: true
+    max_events_per_query: 50
+
+  analyst_copilot:
+    enabled: true
+    conversation_memory_turns: 10
+
+i3_pillars:
+  data_pipelines:
+    weight: 1.0
+    keywords: [data, pipeline, interoperability, standards, api, schema, portability, export]
+
+  technical_capabilities:
+    weight: 1.0
+    keywords: [infrastructure, platform, compute, model, orchestration, agent, api, context]
+
+  education_influence:
+    weight: 1.0
+    keywords: [education, training, academy, skills, learning, certification, teaching]
+
+  market_shaping:
+    weight: 1.0
+    keywords: [partnership, alliance, collaboration, ecosystem, standards]
+
+  alignment:
+    weight: 1.0
+    keywords: [governance, ethics, safety, responsible ai, compliance, audit, transparency]
+
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  console: true

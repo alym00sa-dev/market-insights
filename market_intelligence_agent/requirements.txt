@@ -1,0 +1,93 @@
+n# =============================================================================
+# CORE AGENT FRAMEWORK
+# =============================================================================
+# LangGraph: Multi-agent orchestration, state management, workflows
+langgraph>=0.2.0
+
+# LangChain: Agent components, chains, integrations
+langchain>=0.1.0
+langchain-anthropic>=0.1.0  # Claude integration
+langchain-openai>=0.1.0     # OpenAI integration
+langchain-community>=0.2.0  # Community tools (web search, etc.)
+
+# =============================================================================
+# LLM PROVIDERS
+# =============================================================================
+# Direct API clients (used by our multi-provider wrapper)
+anthropic>=0.18.0  # Claude Sonnet 4.5 for complex reasoning
+openai>=1.12.0     # GPT-4o-mini for simple tasks
+
+# Tavily: Web search for Source Scout automated mode
+tavily-python>=0.3.0
+
+# =============================================================================
+# STORAGE & VECTOR SEARCH
+# =============================================================================
+# ChromaDB: Vector database for semantic search on events
+chromadb>=0.4.22
+
+# SQLAlchemy: ORM for SQLite event database
+sqlalchemy>=2.0.25
+
+# =============================================================================
+# DATA MODELS & VALIDATION
+# =============================================================================
+# Pydantic: Type-safe schemas for events, providers, pillars
+pydantic>=2.6.0
+pydantic-settings>=2.1.0  # Settings management from .env
+
+# =============================================================================
+# CONTENT HARVESTING
+# =============================================================================
+# Trafilatura: Article extraction (better than BeautifulSoup for blogs)
+trafilatura>=1.6.0
+
+# Requests: HTTP client for fetching URLs
+requests>=2.31.0
+
+# BeautifulSoup: HTML parsing for complex scraping
+beautifulsoup4>=4.12.3
+lxml>=5.1.0  # Fast HTML/XML parser (bs4 backend)
+
+# Feedparser: RSS/Atom feed parsing
+feedparser>=6.0.11
+
+# PyPDF2: PDF text extraction
+pypdf2>=3.0.0
+
+# =============================================================================
+# CLI & USER INTERFACE
+# =============================================================================
+# Click: CLI framework for commands (init, seed, chat, analyze)
+click>=8.1.7
+
+# Rich: Beautiful terminal output (tables, progress bars, markdown)
+rich>=13.7.0
+
+# Prompt Toolkit: Interactive chat interface with history
+prompt-toolkit>=3.0.43
+
+# =============================================================================
+# UTILITIES
+# =============================================================================
+# Python-dotenv: Load environment variables from .env
+python-dotenv>=1.0.1
+
+# PyYAML: Parse config.yaml
+pyyaml>=6.0.1
+
+# Python-dateutil: Date parsing and manipulation
+python-dateutil>=2.8.2
+
+# =============================================================================
+# TESTING
+# =============================================================================
+pytest>=8.0.0
+pytest-asyncio>=0.23.4
+
+# =============================================================================
+# OPTIONAL: LOCAL EMBEDDINGS (if not using OpenAI embeddings)
+# =============================================================================
+# Sentence Transformers: Local embedding model (alternative to OpenAI)
+# Uncomment if you want to avoid OpenAI API calls for embeddings
+# sentence-transformers>=2.3.1

@@ -1,0 +1,1012 @@
+{
+  "allUpdatesByYear": {
+    "2023": {
+      "Anthropic": {
+        "total": 1,
+        "memory": 1
+      },
+      "Google": {
+        "total": 2,
+        "memory": 2
+      },
+      "Meta": {
+        "total": 1,
+        "memory": 1
+      },
+      "Microsoft": {
+        "total": 7,
+        "memory": 2
+      },
+      "OpenAI": {
+        "total": 3,
+        "memory": 2
+      }
+    },
+    "2024": {
+      "Anthropic": {
+        "total": 4,
+        "memory": 1
+      },
+      "Google": {
+        "total": 12,
+        "memory": 2
+      },
+      "Meta": {
+        "total": 11,
+        "memory": 5
+      },
+      "Microsoft": {
+        "total": 13,
+        "memory": 3
+      },
+      "OpenAI": {
+        "total": 8,
+        "memory": 3
+      }
+    },
+    "2025": {
+      "Anthropic": {
+        "total": 17,
+        "memory": 7
+      },
+      "Google": {
+        "total": 17,
+        "memory": 2
+      },
+      "Meta": {
+        "total": 8,
+        "memory": 3
+      },
+      "Microsoft": {
+        "total": 12,
+        "memory": 3
+      },
+      "OpenAI": {
+        "total": 22,
+        "memory": 4
+      }
+    },
+    "2026": {
+      "Anthropic": {
+        "total": 0,
+        "memory": 0
+      },
+      "Google": {
+        "total": 1,
+        "memory": 0
+      },
+      "Meta": {
+        "total": 0,
+        "memory": 0
+      },
+      "Microsoft": {
+        "total": 2,
+        "memory": 0
+      },
+      "OpenAI": {
+        "total": 1,
+        "memory": 0
+      }
+    }
+  },
+  "memoryShareByYear": {
+    "2023": {
+      "totalUpdates": 14,
+      "memoryUpdates": 8,
+      "memoryShare": 57.1
+    },
+    "2024": {
+      "totalUpdates": 48,
+      "memoryUpdates": 14,
+      "memoryShare": 29.2
+    },
+    "2025": {
+      "totalUpdates": 76,
+      "memoryUpdates": 19,
+      "memoryShare": 25.0
+    },
+    "2026": {
+      "totalUpdates": 4,
+      "memoryUpdates": 0,
+      "memoryShare": 0.0
+    }
+  },
+  "memoryGrowthByYear": {
+    "2023": {
+      "total": 8,
+      "byProvider": {
+        "Google": 2,
+        "Microsoft": 2,
+        "OpenAI": 2,
+        "Anthropic": 1,
+        "Meta": 1
+      }
+    },
+    "2024": {
+      "total": 14,
+      "byProvider": {
+        "Google": 2,
+        "Microsoft": 3,
+        "OpenAI": 3,
+        "Anthropic": 1,
+        "Meta": 5
+      }
+    },
+    "2025": {
+      "total": 19,
+      "byProvider": {
+        "Google": 2,
+        "Microsoft": 3,
+        "OpenAI": 4,
+        "Anthropic": 7,
+        "Meta": 3
+      }
+    }
+  },
+  "memoryProductsByYear": {
+    "2023": [
+      {
+        "provider": "Google",
+        "product": "Bard",
+        "date": "2023-01-15",
+        "description": "Bard gains a Memory toggle remembering user facts (diet, kids, preferences) with add/delete controls.",
+        "category": "User memory",
+        "source": "AndroidPolice",
+        "sourceUrl": "https://www.androidpolice.com/google-bard-memory-toggle-remember-user-details/"
+      },
+      {
+        "provider": "Microsoft",
+        "product": "Bing Chat in Edge",
+        "date": "2023-02-15",
+        "description": "Persistent chat history enabling reuse of past queries as context.",
+        "category": "Conversation memory",
+        "source": "CNBC",
+        "sourceUrl": "https://www.cnbc.com/2023/05/04/microsoft-removes-bing-waiting-list-and-adds-chat-history.html"
+      },
+      {
+        "provider": "OpenAI",
+        "product": "Assistants API / Threads",
+        "date": "2023-03-15",
+        "description": "Threads store multi-turn conversation state for agents automatically.",
+        "category": "Developer memory",
+        "source": "Wired (DevDay)",
+        "sourceUrl": "https://www.wired.com/story/chatgpt-memory-openai/"
+      },
+      {
+        "provider": "Anthropic",
+        "product": "Claude 2",
+        "date": "2023-04-15",
+        "description": "100K-token long context for extended in-session reasoning; not persistent.",
+        "category": "Long context",
+        "source": "Anthropic",
+        "sourceUrl": "https://www.anthropic.com/news/100k-context-windows"
+      },
+      {
+        "provider": "OpenAI",
+        "product": "GPT-4 / ChatGPT",
+        "date": "2023-05-15",
+        "description": "Large context windows (8K→32K) but no persistent memory.",
+        "category": "Long context",
+        "source": "OpenAI",
+        "sourceUrl": "https://openai.com"
+      },
+      {
+        "provider": "Google",
+        "product": "Bard",
+        "date": "2023-06-15",
+        "description": "Contextual recall only within a single session.",
+        "category": "Session-only",
+        "source": "Google Bard",
+        "sourceUrl": "https://bard.google.com"
+      },
+      {
+        "provider": "Microsoft",
+        "product": "Copilot",
+        "date": "2023-07-15",
+        "description": "Stateless assistant; session-only memory.",
+        "category": "Session-only",
+        "source": "Microsoft",
+        "sourceUrl": "https://www.microsoft.com"
+      },
+      {
+        "provider": "Meta",
+        "product": "Llama 2",
+        "date": "2023-07-18",
+        "description": "Supports 4K–8K token long-context windows but no persistent memory; requires external RAG for any continuity beyond session.",
+        "category": "Long context",
+        "source": "Meta AI Blog",
+        "sourceUrl": "https://arxiv.org/abs/2302.13971"
+      }
+    ],
+    "2024": [
+      {
+        "provider": "Google",
+        "product": "Gemini Chatbot",
+        "date": "2024-01-15",
+        "description": "Gemini now has memory; remembers user info/preferences across sessions (opt-in).",
+        "category": "Persistent memory",
+        "source": "TechCrunch",
+        "sourceUrl": "https://techcrunch.com/2024/11/19/googles-gemini-chatbot-now-has-memory/"
+      },
+      {
+        "provider": "Google",
+        "product": "Gemini LLM",
+        "date": "2024-02-15",
+        "description": "Long-context window supports more extensive reasoning within a session.",
+        "category": "Extended short-term context",
+        "source": "Google Dev Docs",
+        "sourceUrl": "https://ai.google.dev/gemini-api/docs/long-context"
+      },
+      {
+        "provider": "Microsoft",
+        "product": "Microsoft Copilot (General)",
+        "date": "2024-03-15",
+        "description": "Microsoft Copilot begins rolling out deeper \"contextual understanding\" features tied to Microsoft Graph, enabling Copilot to recall documents, emails, meetings, and user context stored in Microsoft 365",
+        "category": "Graph-backed contextual memory (organizational memory; not user-profile memory)",
+        "source": "Demonstrated broadly at Build & Ignite as \"Copilot understands your work context\"",
+        "sourceUrl": "https://blogs.microsoft.com/blog/tag/microsoft-build"
+      },
+      {
+        "provider": "Microsoft",
+        "product": "Microsoft 365 Copilot",
+        "date": "2024-04-15",
+        "description": "Introduces cross-app context abilities — Copilot can remember content across Outlook, Teams, SharePoint, and Word because of Microsoft Graph unification",
+        "category": "Enterprise graph memory (system-level persistent context)",
+        "source": "\"Copilot understands the context across your apps\" (Ignite 2024)",
+        "sourceUrl": "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/microsoft-365-copilot--microsoft-ignite-2024-event-guide/4298855"
+      },
+      {
+        "provider": "Microsoft",
+        "product": "SharePoint Copilot Agents (GA)",
+        "date": "2024-05-15",
+        "description": "SharePoint Agents can store and retrieve site-specific knowledge, documents, and prior user interactions — representing an enterprise-level persistent memory",
+        "category": "Agent-level persistent memory (enterprise graph)",
+        "source": "SharePoint Agents GA announcement",
+        "sourceUrl": "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/ignite-2024-sharepoint-agents-now-in-general-availability/4298746"
+      },
+      {
+        "provider": "OpenAI",
+        "product": "ChatGPT Memory Launch (Feb)",
+        "date": "2024-06-15",
+        "description": "Memory + controls: saved preferences, editable memory log.",
+        "category": "Opt-in persistent",
+        "source": "OpenAI",
+        "sourceUrl": "https://openai.com/index/memory-and-new-controls-for-chatgpt/"
+      },
+      {
+        "provider": "OpenAI",
+        "product": "Memory Wider Rollout (Apr)",
+        "date": "2024-07-15",
+        "description": "Memory expands to Plus subscribers.",
+        "category": "Cross-session memory",
+        "source": "WIRED",
+        "sourceUrl": "https://www.wired.com/story/how-to-use-chatgpt-memory-feature/"
+      },
+      {
+        "provider": "OpenAI",
+        "product": "Memory to All Tiers (Sept)",
+        "date": "2024-08-15",
+        "description": "Memory available to Free/Plus/Team/Enterprise; full UI controls.",
+        "category": "Broad persistent memory",
+        "source": "OpenAI",
+        "sourceUrl": "https://openai.com/index/memory-and-new-controls-for-chatgpt/"
+      },
+      {
+        "provider": "Anthropic",
+        "product": "Claude 3 Models",
+        "date": "2024-09-15",
+        "description": "Improved long-context & Artifacts; no persistent memory yet.",
+        "category": "Long context",
+        "source": "Anthropic",
+        "sourceUrl": "https://www.anthropic.com"
+      },
+      {
+        "provider": "Meta",
+        "product": "Meta AI (Messenger / Instagram / WhatsApp)",
+        "date": "2024-09-29",
+        "description": "Provides short-term conversational recall within the same session (recent turns, task references); explicitly no long-term user preference memory.",
+        "category": "Conversation memory",
+        "source": "Meta Connect 2024",
+        "sourceUrl": "https://about.fb.com/meta-ai"
+      },
+      {
+        "provider": "Meta",
+        "product": "Llama 3",
+        "date": "2024-04-18",
+        "description": "Major expansion to 128K context window allowing deeper reasoning, multi-step task memory, and richer in-session recall.",
+        "category": "Long context",
+        "source": "Llama 3 Release Notes",
+        "sourceUrl": "https://ai.meta.com/llama"
+      },
+      {
+        "provider": "Meta",
+        "product": "Llama Stack",
+        "date": "2024-05-15",
+        "description": "Developer-managed memory: supports RAG, vector stores, episodic logs; Meta does not host or persist memory.",
+        "category": "Developer memory",
+        "source": "Meta Developer Docs",
+        "sourceUrl": "https://ai.meta.com/llama-stack"
+      },
+      {
+        "provider": "Meta",
+        "product": "Meta AI for Ray-Ban Smart Glasses",
+        "date": "2024-09-09",
+        "description": "On-device ephemeral memory to understand recent surroundings, last user query, and visual context; no persistent storage.",
+        "category": "On-device ephemeral",
+        "source": "Meta Smart Glasses Announcement",
+        "sourceUrl": "https://about.fb.com/news"
+      },
+      {
+        "provider": "Meta",
+        "product": "Meta Agent Recipes",
+        "date": "2024-06-20",
+        "description": "Open-source patterns for episodic, semantic, and task memory; memory is always externally hosted by developers.",
+        "category": "Developer memory",
+        "source": "Meta AI Research",
+        "sourceUrl": "https://ai.meta.com/research"
+      }
+    ],
+    "2025": [
+      {
+        "provider": "Google",
+        "product": "Vertex AI Memory Bank",
+        "date": "2025-01-15",
+        "description": "Persistent long-term memory for agents (facts, history, preferences).",
+        "category": "Agent persistent memory",
+        "source": "Google Cloud",
+        "sourceUrl": "https://cloud.google.com/blog/products/ai-machine-learning/vertex-ai-memory-bank-in-public-preview"
+      },
+      {
+        "provider": "Google",
+        "product": "Gemini \"Personal Context\"",
+        "date": "2025-02-15",
+        "description": "Auto-recall of conversations & preferences; default ON (opt-out).",
+        "category": "Persistent personalization memory",
+        "source": "The Verge",
+        "sourceUrl": "https://www.theverge.com/news/758624/google-gemini-ai-automatic-memory-privacy-update"
+      },
+      {
+        "provider": "Microsoft",
+        "product": "Security Copilot Agents",
+        "date": "2025-03-15",
+        "description": "Enables persistent threat-analysis memory: agents maintain knowledge of organizational security posture, incidents, and prior analyses",
+        "category": "Domain-specific persistent memory (security posture memory)",
+        "source": "Microsoft announces 11 new Security Copilot agents (2025)",
+        "sourceUrl": "https://www.microsoft.com/en-us/microsoft-365/blog/2025/11/18/microsoft-ignite-2025-copilot-and-agents-built-to-power-the-frontier-firm/"
+      },
+      {
+        "provider": "Microsoft",
+        "product": "Copilot Studio Memory Layer",
+        "date": "2025-04-15",
+        "description": "New capabilities allow developers to add persistent memory to custom Copilot agents — storing user preferences, prior interactions, or workflow state",
+        "category": "Developer-defined agent memory (persistent)",
+        "source": "Copilot Studio updates (2025 release cycle)",
+        "sourceUrl": "https://learn.microsoft.com/microsoft-copilot-studio"
+      },
+      {
+        "provider": "Microsoft",
+        "product": "Microsoft Graph Improvements",
+        "date": "2025-05-15",
+        "description": "Graph evolves into a \"unified organizational memory\" — powering Copilot's ability to recall meeting summaries, files, chat history, and prior tasks",
+        "category": "Organizational persistent memory",
+        "source": "Repeatedly emphasized across 2024–2025 product releases",
+        "sourceUrl": "https://learn.microsoft.com/graph/overview"
+      },
+      {
+        "provider": "OpenAI",
+        "product": "Responses API",
+        "date": "2025-06-15",
+        "description": "Workflow/task memory for agents (state retention).",
+        "category": "Workflow memory",
+        "source": "OpenAI",
+        "sourceUrl": "https://openai.com/index/new-tools-for-building-agents"
+      },
+      {
+        "provider": "OpenAI",
+        "product": "ChatGPT Pro Enhanced Memory",
+        "date": "2025-07-15",
+        "description": "Deeper long-term personalization (tone, habits, projects).",
+        "category": "Cross-session memory",
+        "source": "OpenAI Blog",
+        "sourceUrl": "https://openai.com/blog"
+      },
+      {
+        "provider": "OpenAI",
+        "product": "Agent Platform",
+        "date": "2025-08-15",
+        "description": "Autonomous agents with persistent tool state & structured memory.",
+        "category": "Agent-level memory",
+        "source": "OpenAI Platform",
+        "sourceUrl": "https://platform.openai.com"
+      },
+      {
+        "provider": "OpenAI",
+        "product": "Retrieval & Vector Store",
+        "date": "2025-09-15",
+        "description": "Long-term vector memory for documents & user knowledge bases.",
+        "category": "Externalized memory",
+        "source": "Retrieval API",
+        "sourceUrl": "https://platform.openai.com/docs/guides/retrieval"
+      },
+      {
+        "provider": "Anthropic",
+        "product": "Claude 4 Models (Opus / Sonnet)",
+        "date": "2025-10-15",
+        "description": "Introduces enhanced memory functions, including creation and referencing of memory files for long-running tasks and document workflows.",
+        "category": "Extended session context / file-based memory",
+        "source": "Launch coverage highlighting improved memory and memory-file behavior.",
+        "sourceUrl": "https://www.anthropic.com/news/claude-4"
+      },
+      {
+        "provider": "Anthropic",
+        "product": "\"Search and reference chats\"",
+        "date": "2025-11-15",
+        "description": "Claude can search across previous chats and surface relevant context in new conversations through retrieval—not true persistent memory.",
+        "category": "Cross-chat retrieval (RAG over chat history)",
+        "source": "Feature described as past chat search/continuation, not persistent memory.",
+        "sourceUrl": "https://support.claude.com/en/articles/11817273-using-claude-s-chat-search-and-memory-to-build-on-previous-context"
+      },
+      {
+        "provider": "Anthropic",
+        "product": "Claude Memory for Teams (project-scoped)",
+        "date": "2025-12-15",
+        "description": "Team-focused memory: Claude remembers projects, processes, and client needs with scoped memories and optional incognito/no-memory mode.",
+        "category": "Project-scoped persistent memory (Teams/Enterprise)",
+        "source": "\"Bringing memory to teams at work\" blog + industry coverage.",
+        "sourceUrl": "https://www.anthropic.com/news/memory"
+      },
+      {
+        "provider": "Anthropic",
+        "product": "Persistent Memory (Teams/Enterprise)",
+        "date": "2025-01-15",
+        "description": "Gains persistent memory across sessions—remembers projects and preferences with granular controls and privacy options.",
+        "category": "Cross-session persistent memory (enterprise-focused)",
+        "source": "Update describing persistent memory and controls.",
+        "sourceUrl": "https://www.reworked.co/digital-workplace/claude-ai-gains-persistent-memory-in-latest-anthropic-update/"
+      },
+      {
+        "provider": "Anthropic",
+        "product": "Optional Memory for Max/Team/Enterprise",
+        "date": "2025-02-15",
+        "description": "Opt-in memory: Claude can recall past conversations when enabled; default remains stateless for privacy.",
+        "category": "Opt-in persistent memory",
+        "source": "Coverage emphasizing privacy-first, opt-in design.",
+        "sourceUrl": "https://www.techradar.com/ai-platforms-assistants/claude/you-can-now-give-claude-access-to-memories-of-previous-conversations-but-only-if-you-want-to"
+      },
+      {
+        "provider": "Anthropic",
+        "product": "Automatic Memory for Teams/Enterprise",
+        "date": "2025-03-15",
+        "description": "Automatic memory enables Claude to recall preferences and project context without explicit prompts; users can edit or disable stored memories.",
+        "category": "Automatic cross-session persistent memory",
+        "source": "Verge coverage of automatic memory upgrade and incognito mode.",
+        "sourceUrl": "https://www.theverge.com/news/776827/anthropic-claude-ai-memory-upgrade-team-enterprise"
+      },
+      {
+        "provider": "Anthropic",
+        "product": "Memory for All Paid Users",
+        "date": "2025-04-15",
+        "description": "Rolls out persistent, project-based memory to all paid customers (Pro, Max, Team, Enterprise), including import/export support for portability.",
+        "category": "Broad rollout of persistent, project-based memory",
+        "source": "Coverage noting expansion and project-based memory spaces.",
+        "sourceUrl": "https://www.macrumors.com/2025/10/23/anthropic-automatic-memory-claude/"
+      },
+      {
+        "provider": "Meta",
+        "product": "Meta AI (Multimodal Assistant Update)",
+        "date": "2025-01-15",
+        "description": "Improved short-session multimodal recall (text + image inputs). Still no persistent user memory across sessions.",
+        "category": "Conversation memory",
+        "source": "Meta AI 2025 Update",
+        "sourceUrl": "https://about.fb.com/meta-ai"
+      },
+      {
+        "provider": "Meta",
+        "product": "Llama 4 (Roadmap / Early Preview)",
+        "date": "2025-02-15",
+        "description": "Early previews highlight larger context windows and emerging agent-memory APIs, but still externalized.",
+        "category": "Long context / Developer memory",
+        "source": "Meta Research Announcements",
+        "sourceUrl": "https://ai.meta.com/llama"
+      },
+      {
+        "provider": "Meta",
+        "product": "Meta Memory Toolkit (Open-Source)",
+        "date": "2025-03-15",
+        "description": "Offers templates and tools for episodic logs, semantic preference stores, and multi-step task memory; developer-hosted memory.",
+        "category": "Developer memory",
+        "source": "Meta Tools 2025",
+        "sourceUrl": "https://ai.meta.com/research/publications/memory-layers-at-scale/"
+      }
+    ]
+  },
+  "agentFeatures": [
+    {
+      "provider": "Google",
+      "2023": 0,
+      "2024": 2,
+      "2025": 7,
+      "2026": 0
+    },
+    {
+      "provider": "Microsoft",
+      "2023": 2,
+      "2024": 3,
+      "2025": 5,
+      "2026": 0
+    },
+    {
+      "provider": "OpenAI",
+      "2023": 5,
+      "2024": 1,
+      "2025": 9,
+      "2026": 3
+    },
+    {
+      "provider": "Anthropic",
+      "2023": 0,
+      "2024": 5,
+      "2025": 11,
+      "2026": 3
+    },
+    {
+      "provider": "Meta",
+      "2023": 0,
+      "2024": 3,
+      "2025": 1,
+      "2026": 0
+    }
+  ],
+  "identityExpansions": {
+    "Google": {
+      "workspace": 8,
+      "graph": 12,
+      "account": 6
+    },
+    "Microsoft": {
+      "workspace": 10,
+      "graph": 9,
+      "account": 8
+    },
+    "OpenAI": {
+      "workspace": 6,
+      "graph": 8,
+      "account": 7
+    },
+    "Anthropic": {
+      "workspace": 4,
+      "graph": 5,
+      "account": 6
+    }
+  },
+  "recallDepthHistory": [
+    {
+      "model": "GPT-3.5 Turbo",
+      "date": "2023-03",
+      "depth": 10000
+    },
+    {
+      "model": "GPT-4",
+      "date": "2023-03",
+      "depth": 25000
+    },
+    {
+      "model": "GPT-4 Turbo",
+      "date": "2023-11",
+      "depth": 75000
+    },
+    {
+      "model": "GPT-4o",
+      "date": "2024-05",
+      "depth": 90000
+    },
+    {
+      "model": "Claude 2",
+      "date": "2023-07",
+      "depth": 90000
+    },
+    {
+      "model": "Claude 2.1",
+      "date": "2023-11",
+      "depth": 135000
+    },
+    {
+      "model": "Claude 3 Opus",
+      "date": "2024-03",
+      "depth": 190000
+    },
+    {
+      "model": "Claude 3 Sonnet",
+      "date": "2024-03",
+      "depth": 165000
+    },
+    {
+      "model": "Gemini Pro 1.0",
+      "date": "2023-12",
+      "depth": 25000
+    },
+    {
+      "model": "Gemini 1.5 Flash",
+      "date": "2024-02",
+      "depth": 300000
+    },
+    {
+      "model": "Gemini 1.5 Pro",
+      "date": "2024-02",
+      "depth": 650000
+    },
+    {
+      "model": "Copilot (GPT-4 Turbo)",
+      "date": "2023-12",
+      "depth": 75000
+    },
+    {
+      "model": "Copilot (GPT-4o)",
+      "date": "2024-05",
+      "depth": 90000
+    },
+    {
+      "model": "Phi-3 Medium",
+      "date": "2024-04",
+      "depth": 45000
+    },
+    {
+      "model": "Phi-3 Mini",
+      "date": "2024-04",
+      "depth": 30000
+    },
+    {
+      "model": "Phi-3 Small",
+      "date": "2024-04",
+      "depth": 22500
+    },
+    {
+      "model": "LongRoPE (research)",
+      "date": "2024-01",
+      "depth": 650000
+    },
+    {
+      "model": "Llama 2",
+      "date": "2023-07",
+      "depth": 4000
+    },
+    {
+      "model": "Llama 3 8B",
+      "date": "2024-04",
+      "depth": 6000
+    },
+    {
+      "model": "Llama 3 70B",
+      "date": "2024-04",
+      "depth": 50000
+    },
+    {
+      "model": "Llama 3.1 70B",
+      "date": "2024-07",
+      "depth": 70000
+    },
+    {
+      "model": "Llama 3.1 405B",
+      "date": "2024-07",
+      "depth": 90000
+    },
+    {
+      "model": "Llama 4 (Preview)",
+      "date": "2025-01",
+      "depth": 160000
+    },
+    {
+      "model": "Llama 4 Scout",
+      "date": "2025-04",
+      "depth": 10000000
+    },
+    {
+      "model": "Llama 4 Maverick",
+      "date": "2025-04",
+      "depth": 1000000
+    },
+    {
+      "model": "Claude 4 Sonnet",
+      "date": "2025-05",
+      "depth": 200000
+    },
+    {
+      "model": "Gemini 2.5 Pro",
+      "date": "2025-06",
+      "depth": 1000000
+    },
+    {
+      "model": "GPT-5",
+      "date": "2025-08",
+      "depth": 400000
+    },
+    {
+      "model": "Claude 4.5 Sonnet",
+      "date": "2025-09",
+      "depth": 200000
+    },
+    {
+      "model": "GPT-5.1",
+      "date": "2025-11",
+      "depth": 400000
+    },
+    {
+      "model": "Claude Opus 4.5",
+      "date": "2025-11",
+      "depth": 200000
+    },
+    {
+      "model": "Gemini 3 Pro",
+      "date": "2025-11",
+      "depth": 1000000
+    },
+    {
+      "model": "GPT-5.2",
+      "date": "2025-12",
+      "depth": 400000
+    },
+    {
+      "model": "Claude 4.6 Opus",
+      "date": "2026-02",
+      "depth": 200000
+    }
+  ],
+  "lockInOpenness": {
+    "strategyMatrix": [
+      {
+        "provider": "OpenAI",
+        "lockInIndex": 8.0,
+        "opennessScore": 3.5,
+        "annotation": "Ecosystem-only portability (CSO: 'within our ecosystem, not across platforms')",
+        "color": "#10A37F"
+      },
+      {
+        "provider": "Anthropic",
+        "lockInIndex": 3.0,
+        "opennessScore": 8.5,
+        "annotation": "Created MCP, donated to AAIF open foundation (Nov 2024)",
+        "color": "#D97757"
+      },
+      {
+        "provider": "Microsoft",
+        "lockInIndex": 4.5,
+        "opennessScore": 7.5,
+        "annotation": "CTO investing in portable semantic memory (2 FTEs)",
+        "color": "#00A4EF"
+      },
+      {
+        "provider": "Google",
+        "lockInIndex": 7.0,
+        "opennessScore": 4.0,
+        "annotation": "Conflicted strategy: ecosystem lock-in vs late MCP adoption",
+        "color": "#4285F4"
+      },
+      {
+        "provider": "Meta",
+        "lockInIndex": 2.0,
+        "opennessScore": 6.5,
+        "annotation": "No persistent memory—developer-managed, open source only",
+        "color": "#0668E1"
+      }
+    ],
+    "factorBreakdown": {
+      "OpenAI": {
+        "lockIn": {
+          "total": 8.0,
+          "switchingCosts": 4.0,
+          "dataPortability": 2.7,
+          "userControl": 1.3
+        },
+        "openness": {
+          "total": 3.5,
+          "dataPortability": 0.8,
+          "interoperability": 1.5,
+          "userControl": 1.2
+        }
+      },
+      "Anthropic": {
+        "lockIn": {
+          "total": 3.0,
+          "switchingCosts": 1.0,
+          "dataPortability": 1.0,
+          "userControl": 1.0
+        },
+        "openness": {
+          "total": 8.5,
+          "dataPortability": 3.2,
+          "interoperability": 3.5,
+          "userControl": 1.8
+        }
+      },
+      "Microsoft": {
+        "lockIn": {
+          "total": 4.5,
+          "switchingCosts": 1.5,
+          "dataPortability": 1.8,
+          "userControl": 1.2
+        },
+        "openness": {
+          "total": 7.5,
+          "dataPortability": 2.8,
+          "interoperability": 2.7,
+          "userControl": 2.0
+        }
+      },
+      "Google": {
+        "lockIn": {
+          "total": 7.0,
+          "switchingCosts": 3.0,
+          "dataPortability": 2.3,
+          "userControl": 1.7
+        },
+        "openness": {
+          "total": 4.0,
+          "dataPortability": 1.3,
+          "interoperability": 1.2,
+          "userControl": 1.5
+        }
+      },
+      "Meta": {
+        "lockIn": {
+          "total": 2.0,
+          "switchingCosts": 0.5,
+          "dataPortability": 0.5,
+          "userControl": 1.0
+        },
+        "openness": {
+          "total": 6.5,
+          "dataPortability": 2.2,
+          "interoperability": 2.5,
+          "userControl": 1.8
+        }
+      }
+    },
+    "momentumTimeline": {
+      "OpenAI": [
+        {"period": "2023-Q1", "lockInIndex": 6.0, "opennessScore": 2.5},
+        {"period": "2023-Q3", "lockInIndex": 6.5, "opennessScore": 2.8},
+        {"period": "2024-Q1", "lockInIndex": 7.0, "opennessScore": 2.8},
+        {"period": "2024-Q3", "lockInIndex": 7.5, "opennessScore": 3.0},
+        {"period": "2025-Q1", "lockInIndex": 7.8, "opennessScore": 3.2},
+        {"period": "2025-Q3", "lockInIndex": 8.0, "opennessScore": 3.5},
+        {"period": "2026-Q1", "lockInIndex": 8.0, "opennessScore": 3.5}
+      ],
+      "Anthropic": [
+        {"period": "2023-Q1", "lockInIndex": 5.0, "opennessScore": 4.0},
+        {"period": "2023-Q3", "lockInIndex": 4.5, "opennessScore": 4.5},
+        {"period": "2024-Q1", "lockInIndex": 4.0, "opennessScore": 5.0},
+        {"period": "2024-Q3", "lockInIndex": 3.5, "opennessScore": 6.5},
+        {"period": "2025-Q1", "lockInIndex": 3.0, "opennessScore": 8.0},
+        {"period": "2025-Q3", "lockInIndex": 3.0, "opennessScore": 8.5},
+        {"period": "2026-Q1", "lockInIndex": 3.0, "opennessScore": 8.5}
+      ],
+      "Microsoft": [
+        {"period": "2023-Q1", "lockInIndex": 6.0, "opennessScore": 4.0},
+        {"period": "2023-Q3", "lockInIndex": 5.5, "opennessScore": 4.5},
+        {"period": "2024-Q1", "lockInIndex": 5.0, "opennessScore": 5.5},
+        {"period": "2024-Q3", "lockInIndex": 4.8, "opennessScore": 6.5},
+        {"period": "2025-Q1", "lockInIndex": 4.5, "opennessScore": 7.0},
+        {"period": "2025-Q3", "lockInIndex": 4.5, "opennessScore": 7.5},
+        {"period": "2026-Q1", "lockInIndex": 4.5, "opennessScore": 7.5}
+      ],
+      "Google": [
+        {"period": "2023-Q1", "lockInIndex": 6.5, "opennessScore": 3.0},
+        {"period": "2023-Q3", "lockInIndex": 6.8, "opennessScore": 3.2},
+        {"period": "2024-Q1", "lockInIndex": 7.0, "opennessScore": 3.5},
+        {"period": "2024-Q3", "lockInIndex": 7.0, "opennessScore": 3.8},
+        {"period": "2025-Q1", "lockInIndex": 7.0, "opennessScore": 3.8},
+        {"period": "2025-Q3", "lockInIndex": 7.0, "opennessScore": 4.0},
+        {"period": "2026-Q1", "lockInIndex": 7.0, "opennessScore": 4.0}
+      ],
+      "Meta": [
+        {"period": "2023-Q1", "lockInIndex": 2.5, "opennessScore": 5.0},
+        {"period": "2023-Q3", "lockInIndex": 2.5, "opennessScore": 5.5},
+        {"period": "2024-Q1", "lockInIndex": 2.2, "opennessScore": 6.0},
+        {"period": "2024-Q3", "lockInIndex": 2.0, "opennessScore": 6.2},
+        {"period": "2025-Q1", "lockInIndex": 2.0, "opennessScore": 6.5},
+        {"period": "2025-Q3", "lockInIndex": 2.0, "opennessScore": 6.5},
+        {"period": "2026-Q1", "lockInIndex": 2.0, "opennessScore": 6.5}
+      ],
+      "events": [
+        {
+          "period": "2024-Q4",
+          "date": "2024-11",
+          "event": "Anthropic launches MCP",
+          "provider": "Anthropic",
+          "impact": "Major openness increase"
+        },
+        {
+          "period": "2025-Q1",
+          "date": "2025-01",
+          "event": "Anthropic persistent memory with granular controls",
+          "provider": "Anthropic",
+          "impact": "Openness + user control"
+        },
+        {
+          "period": "2025-Q1",
+          "date": "2025-03",
+          "event": "OpenAI adopts MCP for agents (but not memory)",
+          "provider": "OpenAI",
+          "impact": "Limited openness increase"
+        },
+        {
+          "period": "2025-Q2",
+          "date": "2025-04",
+          "event": "Google adopts MCP (late)",
+          "provider": "Google",
+          "impact": "Minimal openness signal"
+        },
+        {
+          "period": "2025-Q1",
+          "date": "2025-02",
+          "event": "OpenAI CSO confirms ecosystem-only portability",
+          "provider": "OpenAI",
+          "impact": "Explicit lock-in strategy"
+        },
+        {
+          "period": "2024-Q2",
+          "date": "2024-05",
+          "event": "Microsoft Memory Export API",
+          "provider": "Microsoft",
+          "impact": "Portability increase"
+        },
+        {
+          "period": "2025-Q4",
+          "date": "2025-12",
+          "event": "MCP donated to AAIF (Linux Foundation)",
+          "provider": "Anthropic",
+          "impact": "Industry standard established"
+        }
+      ]
+    },
+    "metadata": {
+      "lastUpdated": "2026-02-10",
+      "scoringMethodology": {
+        "lockInIndex": {
+          "description": "Measures barriers to leaving the platform (0-10, lower is better)",
+          "factors": [
+            {
+              "name": "Switching Costs",
+              "weight": "Highest",
+              "rationale": "Direct barrier—migration time, retraining, disruption"
+            },
+            {
+              "name": "Data Portability",
+              "weight": "High",
+              "rationale": "Without export, switching costs skyrocket"
+            },
+            {
+              "name": "User Control",
+              "weight": "Moderate-high",
+              "rationale": "Visibility enables informed migration decisions"
+            }
+          ]
+        },
+        "opennessScore": {
+          "description": "Measures user agency and interoperability (0-10, higher is better)",
+          "factors": [
+            {
+              "name": "Data Portability",
+              "weight": "Highest",
+              "rationale": "Foundation for openness—can you get your data out?"
+            },
+            {
+              "name": "Interoperability Standards",
+              "weight": "High",
+              "rationale": "Open protocols reduce future lock-in risk"
+            },
+            {
+              "name": "User Control",
+              "weight": "Moderate",
+              "rationale": "Trust and compliance, but openness possible without perfect controls"
+            }
+          ]
+        }
+      },
+      "dataSource": "Based on database events, web research, and director's insider context (CSO quote, CTO priorities)"
+    }
+  }
+}
+
+
+

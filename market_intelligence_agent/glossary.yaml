@@ -1,0 +1,357 @@
+n---
+# Market Intelligence Glossary
+# Comprehensive definitions for benchmarks, market terms, and competitive concepts
+# Used to contextualize data and provide educational context in responses
+
+# =============================================================================
+# AI MODEL BENCHMARKS
+# =============================================================================
+
+benchmarks:
+  # Intelligence & Knowledge Benchmarks
+  mmlu_pro:
+    full_name: "Massive Multitask Language Understanding (Professional)"
+    category: "Knowledge & Reasoning"
+    description: "Tests model's ability to answer graduate-level questions across 57 subjects including STEM, humanities, and social sciences. More challenging variant of MMLU."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.80 is excellent, >0.75 is strong, <0.70 is weak"
+    why_it_matters: "Measures breadth of knowledge and reasoning ability. Critical for educational applications, research assistance, and professional tools."
+    interpretation: "Higher scores indicate better understanding of complex academic concepts across multiple domains."
+
+  gpqa:
+    full_name: "Graduate-Level Google-Proof Q&A"
+    category: "Expert Reasoning"
+    description: "Tests model's ability to answer PhD-level science questions that are designed to be difficult to answer even with internet search."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.65 is excellent, >0.50 is strong, <0.40 is weak"
+    why_it_matters: "Measures deep reasoning capability without relying on memorization. Important for scientific research, advanced problem-solving."
+    interpretation: "Higher scores indicate true reasoning ability rather than pattern matching or memorization."
+
+  hle:
+    full_name: "Hard Logic Evaluation"
+    category: "Logical Reasoning"
+    description: "Tests model's ability to solve complex logical puzzles and multi-step reasoning problems."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.15 is excellent, >0.08 is strong, <0.05 is weak"
+    why_it_matters: "Measures pure logical reasoning without relying on memorized knowledge. Critical for complex problem-solving tasks."
+    interpretation: "Extremely difficult benchmark - even small improvements represent significant capability gains."
+
+  # Coding & Technical Benchmarks
+  livecodebench:
+    full_name: "Live Code Benchmark"
+    category: "Coding Ability"
+    description: "Tests model's ability to solve recent competitive programming problems that were released after the model's training cutoff."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.80 is excellent, >0.65 is strong, <0.50 is weak"
+    why_it_matters: "Measures real coding ability rather than memorization of existing solutions. Critical for coding assistants and developer tools."
+    interpretation: "Higher scores indicate better generalization to new coding challenges."
+
+  scicode:
+    full_name: "Scientific Code Evaluation"
+    category: "Scientific Coding"
+    description: "Tests model's ability to write code for scientific computing tasks across physics, chemistry, biology, and mathematics."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.40 is excellent, >0.30 is strong, <0.20 is weak"
+    why_it_matters: "Measures ability to translate scientific concepts into working code. Important for research applications and scientific computing."
+    interpretation: "Challenging benchmark requiring both scientific knowledge and coding ability."
+
+  # Math Benchmarks
+  aime_25:
+    full_name: "American Invitational Mathematics Examination 2025"
+    category: "Advanced Mathematics"
+    description: "Tests ability to solve competition-level mathematics problems designed for top high school students."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.90 is excellent, >0.70 is strong, <0.50 is weak"
+    why_it_matters: "Measures advanced mathematical reasoning and problem-solving. Important for education and quantitative analysis applications."
+    interpretation: "These are problems that only top 5% of high school math students can solve."
+
+  math_500:
+    full_name: "MATH-500 Dataset"
+    category: "Mathematics"
+    description: "Collection of 500 challenging mathematics problems covering algebra, geometry, number theory, and calculus."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.70 is excellent, >0.50 is strong, <0.35 is weak"
+    why_it_matters: "Tests mathematical problem-solving across multiple domains. Critical for STEM education applications."
+    interpretation: "Requires both computational ability and mathematical reasoning."
+
+  # Tool Use & Function Calling
+  ifbench:
+    full_name: "Instruction Following Benchmark"
+    category: "Instruction Following"
+    description: "Tests model's ability to follow complex, multi-step instructions accurately."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.70 is excellent, >0.60 is strong, <0.50 is weak"
+    why_it_matters: "Measures reliability and controllability. Critical for agent applications and production deployment."
+    interpretation: "Higher scores indicate better ability to follow user intent precisely."
+
+  tau2:
+    full_name: "Tool Augmented Understanding v2"
+    category: "Tool Use"
+    description: "Tests model's ability to effectively use external tools, APIs, and function calls to solve problems."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.65 is excellent, >0.50 is strong, <0.40 is weak"
+    why_it_matters: "Measures ability to work with external systems. Critical for AI agents and workflow automation."
+    interpretation: "Higher scores indicate better integration capabilities with external tools and APIs."
+
+  terminalbench_hard:
+    full_name: "Terminal Benchmark (Hard)"
+    category: "System Administration"
+    description: "Tests model's ability to execute complex command-line operations and system administration tasks."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.20 is excellent, >0.10 is strong, <0.05 is weak"
+    why_it_matters: "Measures ability to work with system commands and DevOps tasks. Important for developer productivity tools."
+    interpretation: "Extremely challenging - requires understanding of system operations, not just syntax."
+
+  lcr:
+    full_name: "Long Context Retrieval"
+    category: "Context Understanding"
+    description: "Tests model's ability to find and use information from very long contexts (100K+ tokens)."
+    scale: "0.0 - 1.0 (0-100%)"
+    what_good_looks_like: ">0.50 is excellent, >0.40 is strong, <0.30 is weak"
+    why_it_matters: "Measures effectiveness of long context windows. Critical for document analysis and extended conversations."
+    interpretation: "Higher scores indicate better 'needle in haystack' retrieval and context utilization."
+
+  # Composite Indices
+  artificial_analysis_intelligence_index:
+    full_name: "AA Intelligence Index"
+    category: "Composite Score"
+    description: "Weighted composite score across multiple reasoning, knowledge, and problem-solving benchmarks maintained by Artificial Analysis."
+    scale: "0 - 100"
+    what_good_looks_like: ">30 is excellent, >20 is strong, <15 is weak"
+    why_it_matters: "Single metric for overall intelligence capability. Useful for quick comparisons across models."
+    interpretation: "Aggregates multiple benchmarks into unified score. Higher is better across all dimensions."
+
+  artificial_analysis_coding_index:
+    full_name: "AA Coding Index"
+    category: "Composite Score"
+    description: "Weighted composite score across coding benchmarks (LiveCodeBench, SciCode, etc.)."
+    scale: "0 - 100"
+    what_good_looks_like: ">25 is excellent, >15 is strong, <10 is weak"
+    why_it_matters: "Single metric for coding capability. Critical for evaluating coding assistants."
+    interpretation: "Aggregates coding-specific benchmarks. Higher indicates better code generation ability."
+
+  artificial_analysis_math_index:
+    full_name: "AA Math Index"
+    category: "Composite Score"
+    description: "Weighted composite score across mathematical reasoning benchmarks (AIME, MATH-500, etc.)."
+    scale: "0 - 100"
+    what_good_looks_like: ">70 is excellent, >50 is strong, <35 is weak"
+    why_it_matters: "Single metric for mathematical capability. Important for STEM education applications."
+    interpretation: "Aggregates math-specific benchmarks. Higher indicates better mathematical reasoning."
+
+# =============================================================================
+# PERFORMANCE METRICS
+# =============================================================================
+
+performance_metrics:
+  output_tokens_per_second:
+    description: "Speed at which model generates output text, measured in tokens per second."
+    unit: "tokens/second"
+    what_good_looks_like: ">200 is excellent, >100 is strong, <50 is slow"
+    why_it_matters: "Determines user experience quality and application responsiveness. Higher throughput enables real-time applications."
+    tradeoffs: "Faster models may sacrifice quality. Balance speed with accuracy requirements."
+
+  time_to_first_token:
+    description: "Latency before model starts generating output, measured from request submission."
+    unit: "seconds"
+    what_good_looks_like: "<0.5s is excellent, <1.0s is strong, >2.0s is slow"
+    why_it_matters: "Critical for perceived responsiveness. Users notice delays over 1 second. Important for conversational AI."
+    tradeoffs: "Lower latency often requires optimized infrastructure and may increase costs."
+
+  context_window:
+    description: "Maximum number of tokens (words/subwords) the model can process in a single request."
+    unit: "tokens"
+    what_good_looks_like: ">100K is excellent, >50K is strong, <10K is limited"
+    why_it_matters: "Determines ability to process long documents, maintain conversation history, and understand complex contexts. Larger windows reduce need for external memory systems."
+    lock_in_implications: "Models with very large context windows (>100K) reduce incentive for open, interoperable memory standards as information can be stored internally."
+
+# =============================================================================
+# MARKET INTELLIGENCE TERMS
+# =============================================================================
+
+market_terms:
+  hyperscaler:
+    category: "Market Structure"
+    definition: "In this analysis, hyperscalers refer specifically to the five major frontier AI model providers: OpenAI, Anthropic, Google, Microsoft, and Meta. These are the companies actively developing and deploying frontier AI models."
+    why_it_matters: "These five companies shape the frontier AI market through their model capabilities, resources, and competitive dynamics. Understanding their strategies is critical for competitive intelligence."
+    tracked_providers: ["OpenAI", "Anthropic", "Google", "Microsoft", "Meta"]
+    note: "Other companies (Amazon, Nvidia, etc.) may be mentioned in competitive comparisons but are not primary subjects of analysis."
+
+  lock-in:
+    category: "Competitive Dynamics"
+    definition: "The degree to which AI capabilities are bound to proprietary identity systems (like Google Workspace or Microsoft Graph), creating switching costs that increase with usage and prevent users from easily migrating their data, context, and workflows to alternative providers."
+    measurement: "Measured by identity binding, data portability, API compatibility, and switching costs."
+    why_it_matters: "Lock-in creates market concentration and reduces user autonomy. Higher lock-in = harder to switch providers = less competition."
+    lock_in_mechanisms:
+      - "Identity system integration (Workspace, Graph, accounts)"
+      - "Proprietary data formats and APIs"
+      - "Platform-specific features and workflows"
+      - "Large internal context windows reducing need for external memory"
+      - "Closed ecosystems and vendor-specific tools"
+    threshold: "100K+ token context windows represent significant lock-in risk as models can store information internally without needing open standards."
+
+  vendor_lock-in:
+    category: "Risk"
+    definition: "Situation where customers become dependent on a specific vendor's products or services, making it difficult or costly to switch to alternatives."
+    types:
+      - "Technical lock-in: proprietary APIs, data formats"
+      - "Economic lock-in: switching costs, training investments"
+      - "Ecosystem lock-in: integrated tools and workflows"
+    mitigation: "Use open standards, ensure data portability, avoid proprietary features when possible."
+
+  openness:
+    category: "Competitive Positioning"
+    definition: "Degree to which a provider supports open standards, data portability, and interoperability with other systems."
+    measurement: "Scored by: open standards support, data export capabilities, API compatibility, documentation quality, partner ecosystem."
+    why_it_matters: "Higher openness = lower lock-in = more competition = better outcomes for users. Critical for evaluating partnership opportunities."
+    indicators:
+      - "Support for Ed-Fi, CASE, or other education standards"
+      - "Data export and portability features"
+      - "Open APIs and integration pathways"
+      - "Partner ecosystem enablement"
+      - "Open-source contributions"
+
+  first_move:
+    category: "Competitive Advantage"
+    definition: "Being first to market with a new capability or feature, creating temporary competitive advantage."
+    advantages: ["Market share capture", "Network effects", "Learning advantages", "Standard-setting opportunity"]
+    risks: ["Execution risk", "Fast-follower threats", "Resource drain"]
+    detection: "Identified by comparing event timestamps and analyzing 'preceded_by_events' in temporal context."
+
+  fast_follower:
+    category: "Competitive Strategy"
+    definition: "Strategy of quickly copying or responding to a competitor's innovation rather than being first to market."
+    advantages: ["Learn from first-mover mistakes", "Lower R&D costs", "Reduced risk"]
+    detection: "Events with short time gap (weeks/months) after competitor announcements in same capability area."
+
+  moat:
+    category: "Competitive Advantage"
+    definition: "Sustainable competitive advantage that protects market position. In AI: technical capabilities, data access, talent, infrastructure scale, ecosystem effects."
+    types:
+      - "Technical moat: superior models, unique capabilities"
+      - "Data moat: access to proprietary training data"
+      - "Scale moat: infrastructure cost advantages"
+      - "Ecosystem moat: developer/user lock-in"
+    durability: "AI moats are less durable than traditional software due to rapid capability convergence and open-source alternatives."
+
+  market_shaping:
+    category: "Strategic Action"
+    definition: "Actions that change market structure, create new categories, or shift competitive dynamics. Examples: setting standards, creating ecosystems, establishing new pricing models."
+    pillar: "P4 - Market Shaping (I³ Index)"
+    examples: ["Partnership announcements", "Standard-setting initiatives", "Ecosystem investments", "Pricing changes"]
+
+  switching_costs:
+    category: "Economics"
+    definition: "Costs (time, money, effort, risk) required to switch from one provider to another."
+    components:
+      - "Data migration costs"
+      - "Retraining and learning curve"
+      - "Workflow disruption"
+      - "Integration re-work"
+      - "Risk of transition failure"
+    relationship_to_lock_in: "Higher switching costs = higher lock-in. Lock-in is the strategic creation of switching costs."
+
+# =============================================================================
+# I³ INDEX PILLARS
+# =============================================================================
+
+i3_pillars:
+  P1_data_access:
+    full_name: "P1 - Data Access, Integration & Open Standards"
+    description: "Measures provider's support for data portability, open standards (Ed-Fi, CASE), APIs, and interoperability."
+    why_it_matters: "Determines ease of integration, data portability, and lock-in risk. Higher P1 = more open and interoperable."
+    indicators: ["API availability", "Standards support", "Data export features", "Partner integration pathways"]
+
+  P2_scalable_workflows:
+    full_name: "P2 - Scalable & Safe AI Workflows"
+    description: "Measures reliability, performance, workflow capabilities, and production-readiness."
+    why_it_matters: "Determines suitability for enterprise deployment. Includes context windows, agent capabilities, workflow automation."
+    indicators: ["Context window size", "Agent features", "Workflow automation", "Reliability metrics"]
+
+  P3_education_influence:
+    full_name: "P3 - Education Influence & Training"
+    description: "Measures investment in education sector, teacher training, curriculum development, and research partnerships."
+    why_it_matters: "Indicates commitment to education market and influence on sector practices."
+    indicators: ["Teacher training programs", "Research partnerships", "Curriculum development", "Education grants"]
+
+  P4_market_shaping:
+    full_name: "P4 - Market Shaping & Ecosystem Leadership"
+    description: "Measures ability to shape markets through partnerships, standards, ecosystem building, and strategic positioning."
+    why_it_matters: "Determines influence on market evolution and competitive dynamics."
+    indicators: ["Partnership announcements", "Standard-setting", "Ecosystem investments", "Strategic positioning"]
+
+  P5_alignment:
+    full_name: "P5 - Responsible AI & Governance"
+    description: "Measures commitment to AI safety, alignment, governance, transparency, and responsible deployment practices."
+    why_it_matters: "Determines trustworthiness and suitability for high-stakes applications like education."
+    indicators: ["Safety testing", "Model cards", "Governance frameworks", "Youth safeguards", "Audit capabilities"]
+
+# =============================================================================
+# DATA SOURCES & ORGANIZATIONS
+# =============================================================================
+
+data_sources:
+  artificial_analysis:
+    full_name: "Artificial Analysis"
+    abbreviation: "AA"
+    type: "Independent AI Model Evaluation Platform"
+    description: "Independent platform that conducts standardized benchmarking and performance testing of AI models across multiple providers. Provides transparent, comparable metrics for intelligence, coding, math, speed, and cost."
+    what_they_measure:
+      - "AI Intelligence Index: Composite score of model reasoning capability"
+      - "AI Coding Index: Composite score of programming ability"
+      - "AI Math Index: Composite score of mathematical reasoning"
+      - "Standard benchmarks: MMLU Pro, GPQA, LiveCodeBench, AIME, etc."
+      - "Performance metrics: Tokens per second, time to first token, latency"
+      - "Pricing: Cost per million tokens for input and output"
+    why_it_matters: "Provides vendor-neutral, third-party validation of model capabilities. Enables apples-to-apples comparison across OpenAI, Anthropic, Google, Meta, and other providers. Critical for making informed model selection decisions."
+    trustworthiness: "Independent organization not affiliated with any AI provider. Uses standardized testing methodology. Regularly updated with latest models."
+    website: "https://artificialanalysis.ai/"
+    data_usage: "AA benchmarks appear in this system with 'AA Intelligence Index', 'AA Coding Index', and 'AA Math Index' metrics, alongside detailed performance and pricing data."
+
+# =============================================================================
+# TECHNICAL CONCEPTS
+# =============================================================================
+
+technical_concepts:
+  context_window:
+    definition: "Maximum number of tokens a model can process in a single request, including both input and output."
+    unit: "tokens (roughly 3/4 of a word)"
+    typical_ranges:
+      - "Small: <10K tokens (~7,500 words)"
+      - "Medium: 10K-50K tokens (~7,500-37,500 words)"
+      - "Large: 50K-100K tokens (~37,500-75,000 words)"
+      - "Very Large: 100K-200K tokens (~75,000-150,000 words)"
+      - "Massive: 200K-1M+ tokens (~150,000-750,000+ words)"
+    why_it_matters: "Enables long document processing, extended conversations, codebase analysis. Larger windows reduce need for external memory systems."
+    lock_in_implications: "Models crossing 100K+ token threshold significantly reduce need for open, interoperable memory standards."
+
+  tokens:
+    definition: "Subword units used by language models. Roughly 3/4 of an English word on average."
+    examples: ["'hello' = 1 token", "'ChatGPT' = 2 tokens", "'artificial intelligence' = 3 tokens"]
+    why_it_matters: "Fundamental unit for pricing, context limits, and performance measurement."
+
+  multimodal:
+    definition: "Ability to process and generate multiple types of content: text, images, audio, video."
+    why_it_matters: "Enables richer applications beyond text-only interactions. Critical for accessibility, education, and creative tools."
+    examples: ["GPT-4o: text, image, audio", "Gemini 1.5: text, image, video, audio"]
+
+  rag:
+    full_name: "Retrieval-Augmented Generation"
+    definition: "Technique where models retrieve relevant information from external knowledge bases before generating responses."
+    why_it_matters: "Extends model knowledge beyond training data. Reduces hallucinations. Common workaround for limited context windows."
+    relationship_to_context: "Large context windows (>100K) can reduce need for RAG by fitting entire documents in context."
+
+  agents:
+    definition: "AI systems that can autonomously plan, use tools, and execute multi-step tasks to achieve goals."
+    capabilities: ["Tool use", "Planning", "Memory", "Workflow execution", "Self-correction"]
+    why_it_matters: "Represents evolution from chatbots to autonomous systems. Critical for productivity and automation applications."
+
+  elo_rating:
+    definition: "Rating system (originally from chess) used to rank AI models based on head-to-head comparisons."
+    how_it_works: "Models compete in pairwise comparisons (human judges pick better output). Ratings adjust based on win/loss records."
+    why_it_matters: "Provides human-preference-based rankings that may differ from benchmark scores."
+    limitation: "Subject to evaluation criteria and judge bias. Different platforms may have different ELO scales."
+
+version: "1.0"
+last_updated: "2026-02-02"
+maintained_by: "Market Intelligence Agent"
