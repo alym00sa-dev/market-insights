@@ -13,22 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI in Education Evidence Dashboard",
+  title: "AI Market Insights Dashboard",
   description: "Strategic framework for navigating research evidence and investment priorities across AI-enabled educational interventions",
   icons: {
-    icon: '/brain-icon.svg',
-  },
-  openGraph: {
-    title: "AI in Education Evidence Dashboard",
-    description: "Strategic framework for navigating research evidence and investment priorities across AI-enabled educational interventions",
-    type: "website",
-    siteName: "AI in Education Evidence Dashboard",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AI in Education Evidence Dashboard",
-    description: "Strategic framework for navigating research evidence and investment priorities across AI-enabled educational interventions",
-  },
+    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">📈</text></svg>',
+  }
 };
 
 export default function RootLayout({
