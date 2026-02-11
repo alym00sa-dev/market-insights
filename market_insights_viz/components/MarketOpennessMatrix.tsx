@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-import ecosystemData from '@/market insights/ecosystem_visualization_data.json';
+import ecosystemData from '@/market-insights/ecosystem_visualization_data.json';
 
 type ViewMode = 'matrix' | 'breakdown' | 'timeline';
 

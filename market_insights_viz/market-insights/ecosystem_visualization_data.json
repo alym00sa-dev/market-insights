@@ -863,7 +863,7 @@
     },
     "momentumTimeline": {
       "OpenAI": [
-        {"period": "2023-Q1", "lockInIndex": 6.0, "opennessScore": 2.5},
+        {"period": "2023-Q1i c", "lockInIndex": 6.0, "opennessScore": 2.5},
         {"period": "2023-Q3", "lockInIndex": 6.5, "opennessScore": 2.8},
         {"period": "2024-Q1", "lockInIndex": 7.0, "opennessScore": 2.8},
         {"period": "2024-Q3", "lockInIndex": 7.5, "opennessScore": 3.0},
