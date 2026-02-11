@@ -13,7 +13,10 @@
     "react-dom": "^19",
     "next": "^15",
     "d3": "^7.9.0",
-    "lucide-react": "^0.469.0"
+    "lucide-react": "^0.469.0",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8",
+    "autoprefixer": "^10"
   },
   "devDependencies": {
     "typescript": "^5",
@@ -21,9 +24,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/d3": "^7",
-    "postcss": "^8",
-    "autoprefixer": "^10",
-    "tailwindcss": "^3.4.1",
     "eslint": "^9",
     "eslint-config-next": "^15"
   }
