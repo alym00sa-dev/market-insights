@@ -1,0 +1,96 @@
+players:
+  - key: openai
+    name: OpenAI
+    aliases:
+      - "OpenAI"
+      - "ChatGPT"
+      - "GPT-4"
+      - "GPT-5"
+      - "o1"
+      - "o3"
+      - "Sora"
+      - "DALL-E"
+      - "Whisper"
+      - "Operator"
+    website: https://openai.com
+    description: "AI research company behind ChatGPT and the GPT model family"
+    is_catch_all: false
+
+  - key: anthropic
+    name: Anthropic
+    aliases:
+      - "Anthropic"
+      - "Claude"
+      - "Claude Sonnet"
+      - "Claude Opus"
+      - "Claude Haiku"
+      - "Constitutional AI"
+    website: https://anthropic.com
+    description: "AI safety company behind the Claude model family"
+    is_catch_all: false
+
+  - key: google
+    name: Google / DeepMind
+    aliases:
+      - "Google"
+      - "DeepMind"
+      - "Google DeepMind"
+      - "Gemini"
+      - "Bard"
+      - "Google AI"
+      - "Vertex AI"
+      - "NotebookLM"
+      - "Imagen"
+      - "AlphaCode"
+    website: https://deepmind.google
+    description: "Google's AI research and products division"
+    is_catch_all: false
+
+  - key: meta
+    name: Meta AI
+    aliases:
+      - "Meta"
+      - "Meta AI"
+      - "Llama"
+      - "LLaMA"
+      - "Facebook AI"
+      - "FAIR"
+      - "PyTorch"
+    website: https://ai.meta.com
+    description: "Meta's AI research and open-source model division"
+    is_catch_all: false
+
+  - key: microsoft
+    name: Microsoft
+    aliases:
+      - "Microsoft"
+      - "Copilot"
+      - "Azure OpenAI"
+      - "Azure AI"
+      - "Bing AI"
+      - "Microsoft AI"
+      - "GitHub Copilot"
+    website: https://microsoft.com/ai
+    description: "Microsoft's AI products and Azure AI platform"
+    is_catch_all: false
+
+  - key: emerging
+    name: Emerging Players
+    aliases:
+      - "xAI"
+      - "Grok"
+      - "Mistral"
+      - "Cohere"
+      - "Perplexity"
+      - "Stability AI"
+      - "Runway"
+      - "ElevenLabs"
+      - "Midjourney"
+      - "Together AI"
+      - "Groq"
+      - "Inflection"
+      - "Databricks"
+      - "Hugging Face"
+    website: null
+    description: "Notable AI companies and models outside the five major hyperscalers"
+    is_catch_all: true

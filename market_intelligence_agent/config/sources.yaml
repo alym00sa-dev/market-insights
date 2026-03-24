@@ -1,0 +1,133 @@
+# Shared general sources — scraped content is tagged to player(s) via alias matching in players.yaml
+general:
+  rss:
+    - name: "The Decoder"
+      url: "https://the-decoder.com/feed/"
+      tier: 1
+      notes: "Pure AI news, 100% relevance, 10/10 recent articles"
+
+    - name: "TechCrunch"
+      url: "https://techcrunch.com/feed/"
+      tier: 1
+      notes: "Broad tech — strong for funding, partnerships, launches"
+
+    - name: "The Verge"
+      url: "https://www.theverge.com/rss/index.xml"
+      tier: 1
+      notes: "Strong hyperscaler product coverage"
+
+    - name: "Wired AI"
+      url: "https://www.wired.com/feed/tag/ai/latest/rss"
+      tier: 1
+      notes: "Quality journalism, policy and product"
+
+    - name: "Techmeme"
+      url: "https://www.techmeme.com/feed.xml"
+      tier: 1
+      notes: "News aggregator — surfaces top stories across outlets"
+
+    - name: "Bloomberg Tech"
+      url: "https://feeds.bloomberg.com/technology/news.rss"
+      tier: 1
+      notes: "Business and financial angle on AI deals"
+
+    - name: "MIT Technology Review"
+      url: "https://www.technologyreview.com/feed/"
+      tier: 1
+      notes: "Thoughtful policy and technical depth"
+
+    - name: "NYT Technology"
+      url: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.rss"
+      tier: 1
+      notes: "NYT Technology section RSS"
+
+    - name: "NYT Business"
+      url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.rss"
+      tier: 1
+      notes: "NYT Business section RSS — covers AI deals, funding, earnings"
+
+  news_api:
+    - name: "NewsAPI"
+      provider: "newsapi"
+      queries:
+        - "artificial intelligence hyperscaler"
+        - "large language model"
+        - "AI funding acquisition"
+
+# Per-player first-party sources
+openai:
+  rss:
+    - name: "OpenAI Blog"
+      url: "https://openai.com/blog/rss/"
+      tier: 1
+      notes: "Blocked (403) — relies on news_queries fallback"
+      status: "blocked"
+  news_queries:
+    - "OpenAI"
+    - "ChatGPT"
+    - "GPT-5"
+    - "o3 model"
+  web_targets: []
+
+anthropic:
+  rss:
+    - name: "Anthropic News"
+      url: "https://www.anthropic.com/rss.xml"
+      tier: 1
+      notes: "No public RSS feed confirmed — relies on news_queries fallback"
+      status: "blocked"
+  news_queries:
+    - "Anthropic"
+    - "Claude AI"
+  web_targets: []
+
+google:
+  rss:
+    - name: "Google DeepMind Blog"
+      url: "https://blog.google/technology/ai/rss/"
+      tier: 1
+      notes: "Google AI blog feed"
+      status: "active"
+  news_queries:
+    - "Google AI"
+    - "DeepMind"
+    - "Gemini model"
+    - "Vertex AI"
+  web_targets: []
+
+meta:
+  rss:
+    - name: "Meta AI Blog"
+      url: "https://engineering.fb.com/category/ai-research/feed/"
+      tier: 1
+      notes: "Meta AI engineering blog"
+      status: "active"
+  news_queries:
+    - "Meta AI"
+    - "Llama model"
+    - "Meta artificial intelligence"
+  web_targets: []
+
+microsoft:
+  rss:
+    - name: "Microsoft AI Blog"
+      url: "https://blogs.microsoft.com/ai/feed/"
+      tier: 1
+      notes: "First-party Microsoft AI announcements"
+      status: "active"
+  news_queries:
+    - "Microsoft AI"
+    - "Azure OpenAI"
+    - "GitHub Copilot"
+    - "Microsoft Copilot"
+  web_targets: []
+
+emerging:
+  rss: []
+  news_queries:
+    - "xAI Grok"
+    - "Mistral AI"
+    - "Cohere AI"
+    - "Perplexity AI"
+  web_targets: []
+  notes: "Relies on general sources and news_queries; no dedicated first-party feeds"

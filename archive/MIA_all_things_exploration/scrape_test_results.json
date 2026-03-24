@@ -1,0 +1,1548 @@
+[
+  {
+    "name": "The Decoder",
+    "url": "https://the-decoder.com/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 10,
+    "ai_relevance_pct": 100.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "OpenAI plans to acquire Promptfoo and bake AI security testing directly into its Frontier enterprise",
+      "Microsoft brings Anthropic's Claude Cowork into Copilot to run tasks across Outlook, Teams, and Exce",
+      "Anthropic's groundbreaking lawsuit challenges the government's power to punish AI safety decisions"
+    ],
+    "error": null
+  },
+  {
+    "name": "arXiv cs.CL",
+    "url": "https://arxiv.org/rss/cs.CL",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 126,
+    "recent_items": 50,
+    "ai_relevant_items": 49,
+    "ai_relevance_pct": 98.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Verify as You Go: An LLM-Powered Browser Extension for Fake News Detection",
+      "Attention Meets Reachability: Structural Equivalence and Efficiency in Grammar-Constrained LLM Decod",
+      "NOTAI.AI: Explainable Detection of Machine-Generated Text via Curvature and Feature Attribution"
+    ],
+    "error": null
+  },
+  {
+    "name": "IEEE Spectrum AI",
+    "url": "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 30,
+    "recent_items": 6,
+    "ai_relevant_items": 29,
+    "ai_relevance_pct": 96.7,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Military AI Policy Needs Democratic Oversight",
+      "Entomologists Use a Particle Accelerator to Image Ants at Scale",
+      "Watershed Moment for AI\u2013Human Collaboration in Math"
+    ],
+    "error": null
+  },
+  {
+    "name": "arXiv cs.LG",
+    "url": "https://arxiv.org/rss/cs.LG",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 236,
+    "recent_items": 50,
+    "ai_relevant_items": 44,
+    "ai_relevance_pct": 88.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Traversal-as-Policy: Log-Distilled Gated Behavior Trees as Externalized, Verifiable Policies for Saf",
+      "JAWS: Enhancing Long-term Rollout of Neural Operators via Spatially-Adaptive Jacobian Regularization",
+      "VDCook:DIY video data cook your MLLMs"
+    ],
+    "error": null
+  },
+  {
+    "name": "Simon Willison",
+    "url": "https://simonwillison.net/atom/everything/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 30,
+    "recent_items": 30,
+    "ai_relevant_items": 26,
+    "ai_relevance_pct": 86.7,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Production query plans without production data",
+      "Perhaps not Boring Technology after all",
+      "Quoting Joseph Weizenbaum"
+    ],
+    "error": null
+  },
+  {
+    "name": "InfoQ AI/ML",
+    "url": "https://feed.infoq.com/ai-ml-data-eng/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 15,
+    "recent_items": 15,
+    "ai_relevant_items": 10,
+    "ai_relevance_pct": 66.7,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Presentation: 4 Patterns of AI Native Development",
+      "Podcast: Mindful Leadership in the Age of AI",
+      "Google BigQuery Previews Cross-Region SQL Queries for Distributed Data"
+    ],
+    "error": null
+  },
+  {
+    "name": "The Guardian AI",
+    "url": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 20,
+    "ai_relevant_items": 12,
+    "ai_relevance_pct": 60.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "From press release \u2026 to scrap metal site: the Essex \u2018supercomputer\u2019 that\u2019s still a scaffolding yard",
+      "Missing money, shipped chips and a 350,000% profit: key takeaways on AI \u2018phantom investments\u2019",
+      "AI firm Anthropic sues US defense department over blacklisting"
+    ],
+    "error": null
+  },
+  {
+    "name": "NVIDIA Dev Blog",
+    "url": "https://developer.nvidia.com/blog/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 100,
+    "recent_items": 13,
+    "ai_relevant_items": 30,
+    "ai_relevance_pct": 60.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "CUDA 13.2 Introduces Enhanced CUDA Tile Support and New Python Features",
+      "Implementing Falcon-H1 Hybrid Architecture in NVIDIA Megatron Core",
+      "Enhancing Distributed Inference Performance with the NVIDIA Inference Transfer Library"
+    ],
+    "error": null
+  },
+  {
+    "name": "Towards AI",
+    "url": "https://pub.towardsai.net/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 6,
+    "ai_relevance_pct": 60.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "I Replaced 200 Lines of Python with 5 DAX Measures. My Data Scientist Was Furious.",
+      "Why Removing Sensitive Features Doesn\u2019t Prevent Bias in Machine Learning Models",
+      "Multimodal Large Language Models: A Practical Example"
+    ],
+    "error": null
+  },
+  {
+    "name": "Phys.org AI",
+    "url": "https://phys.org/rss-feed/technology-news/machine-learning-ai/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 30,
+    "recent_items": 30,
+    "ai_relevant_items": 18,
+    "ai_relevance_pct": 60.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "AI and work: An expert assesses how far this revolution still has to run",
+      "Can people distinguish between AI-generated and human speech?",
+      "Ultra-compact photonic AI chip operates at the speed of light"
+    ],
+    "error": null
+  },
+  {
+    "name": "DEV Community",
+    "url": "https://dev.to/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 12,
+    "recent_items": 12,
+    "ai_relevant_items": 7,
+    "ai_relevance_pct": 58.3,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Uncovering Hidden E-Commerce Churn Risks with SHAP-IQ",
+      "Zero-Day Economics: Why Nation States Sell Exploits to Criminal Markets",
+      "Type-safe LLM prompts in Rust: catching prompt bugs before they happen"
+    ],
+    "error": null
+  },
+  {
+    "name": "Engadget",
+    "url": "https://www.engadget.com/rss.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 50,
+    "recent_items": 50,
+    "ai_relevant_items": 27,
+    "ai_relevance_pct": 54.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Rode\u2019s Rodecaster Video Core makes livestreaming even cheaper",
+      "You can (sort of) block Grok from editing your uploaded photos",
+      "Dutch intelligence services warn of Russian hackers targeting Signal and WhatsApp"
+    ],
+    "error": null
+  },
+  {
+    "name": "The Register AI",
+    "url": "https://www.theregister.com/software/ai_ml/headlines.atom",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 50,
+    "recent_items": 50,
+    "ai_relevant_items": 27,
+    "ai_relevance_pct": 54.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Anthropic debuts pricey and sluggish automated Code Review tool",
+      "Moody humans should let AI handle bad public feedback first, study finds",
+      "Microsoft taps Claude to make Copilot Cowork a better agent"
+    ],
+    "error": null
+  },
+  {
+    "name": "Techmeme",
+    "url": "https://www.techmeme.com/feed.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 15,
+    "recent_items": 15,
+    "ai_relevant_items": 8,
+    "ai_relevance_pct": 53.3,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Sources: PE firm EQT is exploring a sale of Linux distribution vendor SUSE in a deal that could valu",
+      "Sources: Nvidia is pitching NemoClaw, an upcoming open-source AI agent platform for enterprises, and",
+      "Canada will allow TikTok to continue operating in the country under new security commitments, revers"
+    ],
+    "error": null
+  },
+  {
+    "name": "AI Business",
+    "url": "https://aibusiness.com/rss.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 50,
+    "recent_items": 41,
+    "ai_relevant_items": 25,
+    "ai_relevance_pct": 50.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Dealing With AI's Effect on Jobs and Opportunities in Data",
+      "ABB, Nvidia Partner to Deliver Physical AI at Scale",
+      "OpenClaw Forces Enterprise Strategy Questions"
+    ],
+    "error": null
+  },
+  {
+    "name": "Artificial Intelligence News",
+    "url": "https://www.artificialintelligence-news.com/feed/rss/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 12,
+    "recent_items": 12,
+    "ai_relevant_items": 6,
+    "ai_relevance_pct": 50.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "AI insurance underwriting is past the pitch deck\u2014Gradient AI just got the capital to prove it",
+      "UK sovereign AI fund to build up domestic computing infrastructure",
+      "City Union Bank launches AI centre to support banking operations"
+    ],
+    "error": null
+  },
+  {
+    "name": "Wired AI",
+    "url": "https://www.wired.com/feed/tag/ai/latest/rss",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 5,
+    "ai_relevance_pct": 50.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Nvidia Is Planning to Launch an Open-Source AI Agent Platform",
+      "Anthropic Claims Pentagon Feud Could Cost It Billions",
+      "OpenAI and Google Workers File Amicus Brief in Support of Anthropic Against the US Government"
+    ],
+    "error": null
+  },
+  {
+    "name": "Gradient Flow",
+    "url": "https://gradientflow.com/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 7,
+    "ai_relevant_items": 5,
+    "ai_relevance_pct": 50.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "What No One Tells You About Staying Employable in the AI Era",
+      "The Honeymoon Phase Won\u2019t Last: Preparing for AI\u2019s Platform Shift",
+      "The warning signs your AI vendor is becoming your cage"
+    ],
+    "error": null
+  },
+  {
+    "name": "MarkTechPost",
+    "url": "https://www.marktechpost.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 5,
+    "ai_relevance_pct": 50.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Andrew Ng\u2019s Team Releases Context Hub: An Open Source Tool that Gives Your Coding Agent the Up-to-Da",
+      "Anthropic Introduces Code Review via Claude Code to Automate Complex Security Research Using Advance",
+      "The \u2018Bayesian\u2019 Upgrade: Why Google AI\u2019s New Teaching Method is the Key to LLM Reasoning"
+    ],
+    "error": null
+  },
+  {
+    "name": "MIT Technology Review",
+    "url": "https://www.technologyreview.com/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 5,
+    "ai_relevance_pct": 50.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "How AI is turning the Iran conflict into theater",
+      "The usability imperative for securing digital asset devices",
+      "The Download: murky AI surveillance laws, and the White House cracks down on defiant labs"
+    ],
+    "error": null
+  },
+  {
+    "name": "The New Stack",
+    "url": "https://thenewstack.io/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 26,
+    "recent_items": 26,
+    "ai_relevant_items": 13,
+    "ai_relevance_pct": 50.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Anthropic launches a multi-agent code review tool for Claude Code",
+      "How context rot drags down AI and LLM results for enterprises, and how to fix it",
+      "Cursor builds always-on agents to tackle developer task tedium"
+    ],
+    "error": null
+  },
+  {
+    "name": "Latent Space",
+    "url": "https://www.latent.space/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 18,
+    "ai_relevant_items": 9,
+    "ai_relevance_pct": 45.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "[AINews] AI Engineer will be the LAST job",
+      "[AINews] GPT 5.4: SOTA Knowledge Work -and- Coding -and- CUA Model, OpenAI is so very back",
+      "Cursor's Third Era: Cloud Agents"
+    ],
+    "error": null
+  },
+  {
+    "name": "Towards Data Science",
+    "url": "https://towardsdatascience.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 20,
+    "ai_relevant_items": 9,
+    "ai_relevance_pct": 45.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Three OpenClaw Mistakes to Avoid and How to Fix Them",
+      "I Stole a Wall Street Trick to Solve a Google Trends Data\u00a0Problem",
+      "Why Your AI Search Evaluation Is Probably Wrong (And How to Fix It)"
+    ],
+    "error": null
+  },
+  {
+    "name": "AI-TechPark",
+    "url": "https://ai-techpark.com/category/ai/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 4,
+    "ai_relevance_pct": 40.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Together AI Marks Key Milestones at AI Native Event",
+      "Strax Networks Appoints Frank Thomas as Strategic Advisor",
+      "Codenotary Debuts AI Tool to Address Linux Skills Gap"
+    ],
+    "error": null
+  },
+  {
+    "name": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/feed.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 745,
+    "recent_items": 7,
+    "ai_relevant_items": 20,
+    "ai_relevance_pct": 40.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Granite 4.0 1B Speech: Compact, Multilingual, and Built for the Edge",
+      "Ulysses Sequence Parallelism: Training with Million-Token Contexts",
+      "LeRobot v0.5.0: Scaling Every Dimension"
+    ],
+    "error": null
+  },
+  {
+    "name": "MIT News ML",
+    "url": "https://news.mit.edu/topic/mitmachine-learning-rss.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 50,
+    "recent_items": 5,
+    "ai_relevant_items": 20,
+    "ai_relevance_pct": 40.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Neurons receive precisely tailored teaching signals as we learn",
+      "Improving AI models\u2019 ability to explain their predictions",
+      "A \u201cChatGPT for spreadsheets\u201d helps solve difficult engineering challenges faster"
+    ],
+    "error": null
+  },
+  {
+    "name": "NY Times Tech",
+    "url": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 20,
+    "ai_relevant_items": 8,
+    "ai_relevance_pct": 40.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Anthropic Sues Department of Defense Over \u2018Supply Chain Risk\u2019 Label",
+      "The Former Coal Miner in the Middle of the A.I. Data Center Boom",
+      "\u2018Designed to Wreak Havoc\u2019: The Cheap Drones Shaping the War With Iran"
+    ],
+    "error": null
+  },
+  {
+    "name": "The Algorithmic Bridge",
+    "url": "https://thealgorithmicbridge.substack.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 7,
+    "ai_relevant_items": 8,
+    "ai_relevance_pct": 40.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "The Relativity of Life",
+      "Anthropic\u2019s New AI Report Accidentally Reveals an Industry-Sized Weak Spot",
+      "How Many People Does It Take to Kill a ChatGPT?"
+    ],
+    "error": null
+  },
+  {
+    "name": "Databricks Blog",
+    "url": "https://www.databricks.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 4,
+    "ai_relevance_pct": 40.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Business Intelligence Analytics: A Complete Guide for the AI Era",
+      "Introducing Kasal",
+      "The Professional Impact of Becoming Databricks Certified"
+    ],
+    "error": null
+  },
+  {
+    "name": "Bloomberg Tech",
+    "url": "https://feeds.bloomberg.com/technology/news.rss",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 30,
+    "recent_items": 29,
+    "ai_relevant_items": 11,
+    "ai_relevance_pct": 36.7,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "TikTok Gets Green Light to Stay in Canada, Reversing Earlier Ban",
+      "Anthropic Sues US Government Over Supply Chain Risk Label",
+      "Oil Falls After Trump Iran Remarks | The Close 3/9/2026"
+    ],
+    "error": null
+  },
+  {
+    "name": "The Sequence",
+    "url": "https://thesequence.substack.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 9,
+    "ai_relevant_items": 7,
+    "ai_relevance_pct": 35.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "The Sequence Radar #820: GPT-5.4, Cursor, and the New Desktop",
+      "The Sequence Opinion #819: How AI Chips are Made?",
+      "The Sequence AI of the Week #818: You Cannot Miss Qwen 3.5"
+    ],
+    "error": null
+  },
+  {
+    "name": "gHacks",
+    "url": "https://www.ghacks.net/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 40,
+    "recent_items": 40,
+    "ai_relevant_items": 13,
+    "ai_relevance_pct": 32.5,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "iOS 26.4: AI Playlists in Apple Music and More Updates Coming to Your iPhone",
+      "ChatGPT Adult Mode Delayed Again as OpenAI Prioritizes Other Updates",
+      "OPPO Find N6 Launching Globally on March 17 With Pen Support And Minimal Crease"
+    ],
+    "error": null
+  },
+  {
+    "name": "Hacker Noon AI",
+    "url": "https://hackernoon.com/tagged/ai/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 50,
+    "recent_items": 50,
+    "ai_relevant_items": 16,
+    "ai_relevance_pct": 32.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "AI in Veterinary and Medical Fields: Grok, DeepSeek, and ChatGPT",
+      "I Replaced MyFitnessPal and Other Apps With a Single MCP Server: Here's How I Did It",
+      "Why Modern BI Architectures Need More Than Just Star Schemas"
+    ],
+    "error": null
+  },
+  {
+    "name": "KDnuggets",
+    "url": "https://www.kdnuggets.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 3,
+    "ai_relevance_pct": 30.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Google Stax: Testing Models and Prompts Against Your Own Criteria",
+      "Are Language Models a Commodity?",
+      "7 Ways People Are Making Money Using AI in 2026"
+    ],
+    "error": null
+  },
+  {
+    "name": "LangChain Blog",
+    "url": "https://blog.langchain.dev/rss/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 15,
+    "recent_items": 5,
+    "ai_relevant_items": 4,
+    "ai_relevance_pct": 26.7,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "How we built LangChain\u2019s GTM Agent",
+      "Evaluating Skills",
+      "LangSmith CLI & Skills"
+    ],
+    "error": null
+  },
+  {
+    "name": "Futurism AI",
+    "url": "https://futurism.com/categories/ai-artificial-intelligence/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 50,
+    "recent_items": 50,
+    "ai_relevant_items": 13,
+    "ai_relevance_pct": 26.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Oracle Axing Huge Number of Jobs as AI Crisis Intensifies",
+      "Anthropic Sues Pentagon",
+      "Top OpenAI Executive Quits in Protest"
+    ],
+    "error": null
+  },
+  {
+    "name": "TechCrunch",
+    "url": "https://techcrunch.com/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 20,
+    "ai_relevant_items": 5,
+    "ai_relevance_pct": 25.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Electric air taxis are about to take flight in 26 states",
+      "OpenAI and Google employees rush to Anthropic\u2019s defense in DOD lawsuit",
+      "Anthropic launches code review tool to check flood of AI-generated code"
+    ],
+    "error": null
+  },
+  {
+    "name": "AI Accelerator Institute",
+    "url": "https://aiacceleratorinstitute.com/rss/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 15,
+    "recent_items": 8,
+    "ai_relevant_items": 3,
+    "ai_relevance_pct": 20.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "How AstraZeneca is quietly rewiring Boston\u2019s AI ecosystem",
+      "The emergence of the AI  Architect: Engineering the future of tech",
+      "Operational stability for  mission-critical ML systems"
+    ],
+    "error": null
+  },
+  {
+    "name": "The Next Web Neural",
+    "url": "https://thenextweb.com/neural/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 2,
+    "ai_relevance_pct": 20.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "The open-source AI red-teaming tool used by Fortune 500 companies is now part of OpenAI",
+      "Italy&#8217;s Mirai Robotics raises $4.2M to build autonomous vessels for the &#8216;blue economy&#8",
+      "Nscale raises $2bn Series C at $14.6bn valuation"
+    ],
+    "error": null
+  },
+  {
+    "name": "Stack Overflow Blog",
+    "url": "https://stackoverflow.blog/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 40,
+    "recent_items": 10,
+    "ai_relevant_items": 7,
+    "ai_relevance_pct": 17.5,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Organizing productive platform teams",
+      "Building brains for bulldozers",
+      "DeveloperWeek 2026: Making AI tools that are actually good"
+    ],
+    "error": null
+  },
+  {
+    "name": "New Scientist Tech",
+    "url": "https://www.newscientist.com/subject/technology/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 100,
+    "recent_items": 15,
+    "ai_relevant_items": 8,
+    "ai_relevance_pct": 16.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "How an intern helped build the AI that shook the world",
+      "The moment that kicked off the AI revolution",
+      "Claude AI: Why are there so many internet outages?"
+    ],
+    "error": null
+  },
+  {
+    "name": "TechRepublic AI",
+    "url": "https://www.techrepublic.com/rssfeeds/topic/artificial-intelligence/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 20,
+    "ai_relevant_items": 3,
+    "ai_relevance_pct": 15.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "US CBP Says Its Systems Aren\u2019t Ready for Massive Tariff Refunds",
+      "Robots Rise, Humans Fall: Amazon Cuts Robotics Staff Amid Automation Push",
+      "X Tests Ad Format That Turns Product Mentions Into Shopping Prompts"
+    ],
+    "error": null
+  },
+  {
+    "name": "ZDNET AI",
+    "url": "https://www.zdnet.com/topic/artificial-intelligence/rss.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 20,
+    "ai_relevant_items": 3,
+    "ai_relevance_pct": 15.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Shark UV Reveal review: If you took Dyson's laser-vacuuming tech and put it in a robot",
+      "You can buy last year's LG OLED TV at Best Buy for 50% off - and I highly recommend it",
+      "AT&T will sell you the iPhone 17e for just $6 a month - how to qualify for the deal"
+    ],
+    "error": null
+  },
+  {
+    "name": "404 Media",
+    "url": "https://www.404media.co/rss",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 15,
+    "recent_items": 15,
+    "ai_relevant_items": 2,
+    "ai_relevance_pct": 13.3,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Understanding Roblox\u2019s Grooming Problem",
+      "How to Talk to Someone Experiencing 'AI Psychosis'",
+      "I Visited the \u2018Freedom Truck\u2019 to Meet PragerU\u2019s AI Slop Founders"
+    ],
+    "error": null
+  },
+  {
+    "name": "Business Insider",
+    "url": "https://feeds.businessinsider.com/custom/all",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 20,
+    "ai_relevant_items": 2,
+    "ai_relevance_pct": 10.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Meet Jay Graber, who is stepping down as Bluesky's CEO to return to 'building new things' as chief i",
+      "Millions of student-loan borrowers are kicked off of Biden's key affordable repayment plan in a surp",
+      "TSA is a mess at several airports \u2014 but most others are just fine"
+    ],
+    "error": null
+  },
+  {
+    "name": "Crunchbase News",
+    "url": "https://news.crunchbase.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 1,
+    "ai_relevance_pct": 10.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "The Series B Pipeline Looks Refreshingly Diversified",
+      "The Week\u2019s 10 Biggest Funding Rounds: Space Tech, AI Infrastructure Lead Fundraises",
+      "Tim Draper On The AI Boom, Bitcoin\u2019s Future And Building \u2018Human Accelerators\u2019"
+    ],
+    "error": null
+  },
+  {
+    "name": "The Verge",
+    "url": "https://www.theverge.com/rss/index.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 1,
+    "ai_relevance_pct": 10.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Apple smart home display rumors now point to a fall launch with iOS 27",
+      "The government shutdown is hitting airports \u2014 but not ICE",
+      "Everything from the last week of everything is gambling now"
+    ],
+    "error": null
+  },
+  {
+    "name": "TechXplore AI",
+    "url": "https://techmonitor.ai/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 10,
+    "ai_relevant_items": 1,
+    "ai_relevance_pct": 10.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Maxon partners with Tencent Cloud to bring gen AI to Cinema 4D",
+      "Tech Monitor\u2019s parent company GlobalData moves to Main Market of LSE",
+      "Bringing intelligence to the factory floor: Private 5G and edge computing*"
+    ],
+    "error": null
+  },
+  {
+    "name": "Rest of World",
+    "url": "https://restofworld.org/feed/latest",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 12,
+    "recent_items": 12,
+    "ai_relevant_items": 1,
+    "ai_relevance_pct": 8.3,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "China leads the humanoid robot race \u2014 but the U.S. still has a shot",
+      "Waiting for the check marks: The reality of connecting with family in Iran",
+      "Black-box AI and cheap drones are outpacing global rules of war"
+    ],
+    "error": null
+  },
+  {
+    "name": "Gizmodo",
+    "url": "https://gizmodo.com/rss",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 20,
+    "ai_relevant_items": 1,
+    "ai_relevance_pct": 5.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Disney Is Trying Something Different With Its Next Live-Action Remake",
+      "Most Self-Respecting X Users Are Probably Going to Want to Change This New Setting",
+      "\u2018The Super Mario Galaxy Movie\u2019 Powers Up With One Final Trailer"
+    ],
+    "error": null
+  },
+  {
+    "name": "Ars Technica",
+    "url": "https://feeds.arstechnica.com/arstechnica/index",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 20,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "hot",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Quad Cortex mini amp modeler: All the power, half the size",
+      "Testing Apple's 2026 16-inch MacBook Pro, M5 Max, and its new \"performance\" cores",
+      "US blindsides states with surprise settlement in Live Nation/Ticketmaster trial"
+    ],
+    "error": null
+  },
+  {
+    "name": "Quanta Magazine",
+    "url": "https://api.quantamagazine.org/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 5,
+    "recent_items": 5,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "hot",
+    "scrape_score": "ok",
+    "sample_titles": [
+      "Disorder Drives One of Nature\u2019s Most Complex Machines",
+      "New Strides Made on Deceptively Simple \u2018Lonely Runner\u2019 Problem",
+      "Can the Most Abstract Math Make the World a Better Place?"
+    ],
+    "error": null
+  },
+  {
+    "name": "Last Week in AI",
+    "url": "https://lastweekin.ai/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 3,
+    "ai_relevant_items": 17,
+    "ai_relevance_pct": 85.0,
+    "recency_score": "warm",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Last Week in AI #337 - Anthropic Risk, QuitGPT, ChatGPT 5.4",
+      "LWiAI Podcast #235 - Sonnet 4.6, Deep-thinking tokens, Anthropic vs Pentagon",
+      "Last Week in AI #336 - Sonnet 4.6, Gemini 3.1 Pro, Anthropic vs Pentagon"
+    ],
+    "error": null
+  },
+  {
+    "name": "SiliconANGLE AI",
+    "url": "https://siliconangle.com/category/ai/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 30,
+    "recent_items": 2,
+    "ai_relevant_items": 21,
+    "ai_relevance_pct": 70.0,
+    "recency_score": "warm",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Nimble raises $47M to scale agentic web search platform for enterprise AI",
+      "OpenAI allies with 4 big consulting giants as the agentic enterprise battle heats up",
+      "Anthropic slams Chinese AI firms for harvesting data from its Claude chatbot"
+    ],
+    "error": null
+  },
+  {
+    "name": "bdTechTalks",
+    "url": "https://bdtechtalks.com/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 50,
+    "recent_items": 2,
+    "ai_relevant_items": 32,
+    "ai_relevance_pct": 64.0,
+    "recency_score": "warm",
+    "scrape_score": "great",
+    "sample_titles": [
+      "How C-JEPA is teaching AI the physics of the physical world",
+      "How Databricks\u2019 FlashOptim cuts LLM training memory by 50 percent",
+      "How sparse attention solves the memory bottleneck in long-context LLMs"
+    ],
+    "error": null
+  },
+  {
+    "name": "DeepMind Blog",
+    "url": "https://deepmind.com/blog/feed/basic/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 100,
+    "recent_items": 2,
+    "ai_relevant_items": 23,
+    "ai_relevance_pct": 46.0,
+    "recency_score": "warm",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Gemini 3.1 Flash-Lite: Built for intelligence at scale",
+      "Nano Banana 2: Combining Pro capabilities with lightning-fast speed",
+      "Gemini 3.1 Pro: A smarter model for your most complex tasks"
+    ],
+    "error": null
+  },
+  {
+    "name": "AI Now Institute",
+    "url": "https://ainowinstitute.org/category/news/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 3,
+    "ai_relevant_items": 4,
+    "ai_relevance_pct": 40.0,
+    "recency_score": "warm",
+    "scrape_score": "great",
+    "sample_titles": [
+      "The one question everyone should be asking after OpenAI\u2019s deal with the Pentagon",
+      "Key Questions on the Role of Technology in the Expanding Middle East War",
+      "AI company Anthropic amends core safety principle amid growing competition in sector"
+    ],
+    "error": null
+  },
+  {
+    "name": "Interconnects",
+    "url": "https://www.interconnects.ai/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 4,
+    "ai_relevant_items": 7,
+    "ai_relevance_pct": 35.0,
+    "recency_score": "warm",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Dean Ball on open models and government control",
+      "Olmo Hybrid and future LLM architectures",
+      "Latest open artifacts (#19): Qwen 3.5, GLM 5, MiniMax 2.5 \u2014 Chinese labs' latest push of the frontie"
+    ],
+    "error": null
+  },
+  {
+    "name": "Wolfram Blog",
+    "url": "https://blog.wolfram.com/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 9,
+    "recent_items": 2,
+    "ai_relevant_items": 2,
+    "ai_relevance_pct": 22.2,
+    "recency_score": "warm",
+    "scrape_score": "ok",
+    "sample_titles": [
+      "Investigating Validity of AI-Derived Stripped Gluon Amplitudes with Symbolic Computation",
+      "Understanding Smoke Point in Cooking with Wolfram",
+      "Making Wolfram Tech Available as a Foundation Tool for LLM Systems"
+    ],
+    "error": null
+  },
+  {
+    "name": "Ahead of AI",
+    "url": "https://magazine.sebastianraschka.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 1,
+    "ai_relevant_items": 17,
+    "ai_relevance_pct": 85.0,
+    "recency_score": "stale",
+    "scrape_score": "great",
+    "sample_titles": [
+      "A Dream of Spring for Open-Weight LLMs: 10 Architectures from Jan-Feb 2026",
+      "Categories of Inference-Time Scaling for Improved LLM Reasoning",
+      "The State Of LLMs 2025: Progress, Problems, and Predictions"
+    ],
+    "error": null
+  },
+  {
+    "name": "AI Snake Oil",
+    "url": "https://aisnakeoil.substack.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 1,
+    "ai_relevant_items": 5,
+    "ai_relevance_pct": 25.0,
+    "recency_score": "stale",
+    "scrape_score": "great",
+    "sample_titles": [
+      "New Paper: Towards a science of AI agent reliability",
+      "AI Won\u2019t Automatically Make Legal Services Cheaper",
+      "Fact checking Moravec's paradox"
+    ],
+    "error": null
+  },
+  {
+    "name": "ScienceDaily AI",
+    "url": "https://www.sciencedaily.com/rss/computers_math/artificial_intelligence.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 60,
+    "recent_items": 1,
+    "ai_relevant_items": 7,
+    "ai_relevance_pct": 14.0,
+    "recency_score": "stale",
+    "scrape_score": "great",
+    "sample_titles": [
+      "ChatGPT as a therapist? New study reveals serious ethical risks",
+      "Quantum computer breakthrough tracks qubit fluctuations in real time",
+      "Brain inspired machines are better at math than expected"
+    ],
+    "error": null
+  },
+  {
+    "name": "Replicate Blog",
+    "url": "https://replicate.com/blog/rss",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 120,
+    "recent_items": 1,
+    "ai_relevant_items": 6,
+    "ai_relevance_pct": 12.0,
+    "recency_score": "stale",
+    "scrape_score": "great",
+    "sample_titles": [
+      "How to prompt Seedream 5.0",
+      "Recraft V4: image generation with design taste",
+      "Run Isaac 0.1 on Replicate"
+    ],
+    "error": null
+  },
+  {
+    "name": "VentureBeat AI",
+    "url": "https://venturebeat.com/category/ai/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 7,
+    "recent_items": 0,
+    "ai_relevant_items": 7,
+    "ai_relevance_pct": 100.0,
+    "recency_score": "dead",
+    "scrape_score": "ok",
+    "sample_titles": [
+      "Railway secures $100 million to challenge AWS with AI-native cloud infrastructure",
+      "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+      "Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews"
+    ],
+    "error": null
+  },
+  {
+    "name": "Chain of Thought (Every)",
+    "url": "https://every.to/chain-of-thought/feed.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 24,
+    "recent_items": 0,
+    "ai_relevant_items": 24,
+    "ai_relevance_pct": 100.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "The Two-slice Team",
+      "OpenAI Has Some Catching Up to Do",
+      "Agent-native Architectures: How to Build Apps After the End of Code"
+    ],
+    "error": null
+  },
+  {
+    "name": "Chip Huyen",
+    "url": "https://huyenchip.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 0,
+    "ai_relevant_items": 10,
+    "ai_relevance_pct": 100.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Common pitfalls when building generative AI applications",
+      "Agents",
+      "Building A Generative AI Platform"
+    ],
+    "error": null
+  },
+  {
+    "name": "Google AI Blog",
+    "url": "http://googleaiblog.blogspot.com/atom.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 25,
+    "recent_items": 0,
+    "ai_relevant_items": 25,
+    "ai_relevance_pct": 100.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Generative AI to quantify uncertainty in weather forecasting",
+      "AutoBNN: Probabilistic time series forecasting with compositional bayesian neural networks",
+      "Computer-aided diagnosis for lung cancer screening"
+    ],
+    "error": null
+  },
+  {
+    "name": "ML@CMU Blog",
+    "url": "https://blog.ml.cmu.edu/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 1,
+    "recent_items": 0,
+    "ai_relevant_items": 1,
+    "ai_relevance_pct": 100.0,
+    "recency_score": "dead",
+    "scrape_score": "poor",
+    "sample_titles": [
+      "Carnegie Mellon at NeurIPS 2025"
+    ],
+    "error": null
+  },
+  {
+    "name": "BAIR Blog",
+    "url": "https://bair.berkeley.edu/blog/feed.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 0,
+    "ai_relevant_items": 10,
+    "ai_relevance_pct": 100.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "RL without TD learning",
+      "What exactly does word2vec learn?",
+      "Whole-Body Conditioned Egocentric Video Prediction"
+    ],
+    "error": null
+  },
+  {
+    "name": "Unwind AI",
+    "url": "https://unwindai.substack.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 0,
+    "ai_relevant_items": 15,
+    "ai_relevance_pct": 75.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Unwind AI Has Moved to Beehiiv",
+      "Important Information about Unwind AI + Last Week in AI",
+      "OpenAI's New Search Engine: SearchGPT"
+    ],
+    "error": null
+  },
+  {
+    "name": "The Gradient",
+    "url": "https://thegradient.pub/rss/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 15,
+    "recent_items": 0,
+    "ai_relevant_items": 9,
+    "ai_relevance_pct": 60.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "After Orthogonality: Virtue-Ethical Agency and AI Alignment",
+      "AGI Is Not Multimodal",
+      "Shape, Symmetries, and Structure: The Changing Role of Mathematics in Machine Learning Research"
+    ],
+    "error": null
+  },
+  {
+    "name": "KnowTechie AI",
+    "url": "https://knowtechie.com/category/ai/feed/",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 0,
+    "ai_relevant_items": 11,
+    "ai_relevance_pct": 55.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "OpenAI launches ChatGPT Health: Here\u2019s what to know",
+      "Google, Character.ai settle lawsuits over teen suicides",
+      "Deepfakes are fooling everyone\u2014what you need to know now"
+    ],
+    "error": null
+  },
+  {
+    "name": "WandB Blog",
+    "url": "https://wandb.ai/fully-connected/rss.xml",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 89,
+    "recent_items": 0,
+    "ai_relevant_items": 27,
+    "ai_relevance_pct": 54.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Bridging AI & Science: The Impact of Machine Learning on Material Innovation with Joe Spisak of Meta",
+      "Unlocking the Power of Language Models in Enterprise: A Deep Dive with Chris Van Pelt",
+      "Providing Greater Access to LLMs with Brandon Duderstadt, Co-Founder and CEO of Nomic AI"
+    ],
+    "error": null
+  },
+  {
+    "name": "AIModels.fyi",
+    "url": "https://aimodels.substack.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 0,
+    "ai_relevant_items": 10,
+    "ai_relevance_pct": 50.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Can AI *really* research like us? This new framework puts it to the test.",
+      "Can an AI *finally* react like a real person during a video call?",
+      "Model of the Month: chatterbox-turbo"
+    ],
+    "error": null
+  },
+  {
+    "name": "Synced Review",
+    "url": "https://syncedreview.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 0,
+    "ai_relevant_items": 5,
+    "ai_relevance_pct": 50.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Which Agent Causes Task Failures and When?Researchers from PSU and Duke explores automated failure a",
+      "ByteDance Introduces Astra: A Dual-Model Architecture for Autonomous Robot Navigation",
+      "MIT Researchers Unveil \u201cSEAL\u201d: A New Step Towards Self-Improving AI"
+    ],
+    "error": null
+  },
+  {
+    "name": "SemiAnalysis",
+    "url": "https://www.semianalysis.com/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 10,
+    "recent_items": 0,
+    "ai_relevant_items": 4,
+    "ai_relevance_pct": 40.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "xAI\u2019s Colossus 2 \u2013 First Gigawatt Datacenter In The World, Unique RL Methodology, Capital Raise",
+      "Another Giant Leap: The Rubin CPX Specialized Accelerator & Rack",
+      "Huawei Ascend Production Ramp: Die Banks, TSMC Continued Production, HBM is The Bottleneck"
+    ],
+    "error": null
+  },
+  {
+    "name": "One Useful Thing",
+    "url": "https://www.oneusefulthing.org/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 0,
+    "ai_relevant_items": 7,
+    "ai_relevance_pct": 35.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "A Guide to Which AI to Use in the Agentic Era",
+      "Management as AI superpower",
+      "Claude Code and What Comes Next"
+    ],
+    "error": null
+  },
+  {
+    "name": "Generational",
+    "url": "https://www.generational.pub/feed",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 0,
+    "ai_relevant_items": 6,
+    "ai_relevance_pct": 30.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "How The AI Bubble Will Burst",
+      "AI Trends 2025",
+      "Living & Working with AI"
+    ],
+    "error": null
+  },
+  {
+    "name": "Freethink",
+    "url": "https://www.freethink.com/feed/all",
+    "status": "ok",
+    "http_code": 200,
+    "total_items": 20,
+    "recent_items": 0,
+    "ai_relevant_items": 2,
+    "ai_relevance_pct": 10.0,
+    "recency_score": "dead",
+    "scrape_score": "great",
+    "sample_titles": [
+      "Inside the network watching the world in real time",
+      "A memo from the future",
+      "A playbook for the next century of progress"
+    ],
+    "error": null
+  },
+  {
+    "name": "Anaconda Blog",
+    "url": "https://www.anaconda.com/blog/feed",
+    "status": "parse_error",
+    "http_code": 200,
+    "total_items": 0,
+    "recent_items": 0,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "dead",
+    "scrape_score": "ok",
+    "sample_titles": [],
+    "error": "No entries parsed"
+  },
+  {
+    "name": "Analytics India Magazine",
+    "url": "https://analyticsindiamag.com/feed/",
+    "status": "parse_error",
+    "http_code": 200,
+    "total_items": 0,
+    "recent_items": 0,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "dead",
+    "scrape_score": "ok",
+    "sample_titles": [],
+    "error": "No entries parsed"
+  },
+  {
+    "name": "Computerworld",
+    "url": "http://www.computerworld.com/index.rss",
+    "status": "error",
+    "http_code": 404,
+    "total_items": 0,
+    "recent_items": 0,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "dead",
+    "scrape_score": "dead",
+    "sample_titles": [],
+    "error": "HTTP 404"
+  },
+  {
+    "name": "Datanami",
+    "url": "https://www.datanami.com/feed/",
+    "status": "blocked",
+    "http_code": 403,
+    "total_items": 0,
+    "recent_items": 0,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "dead",
+    "scrape_score": "blocked",
+    "sample_titles": [],
+    "error": "HTTP 403"
+  },
+  {
+    "name": "InfoWorld ML",
+    "url": "https://www.infoworld.com/category/machine-learning/index.rss",
+    "status": "parse_error",
+    "http_code": 200,
+    "total_items": 0,
+    "recent_items": 0,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "dead",
+    "scrape_score": "ok",
+    "sample_titles": [],
+    "error": "No entries parsed"
+  },
+  {
+    "name": "Microsoft Research",
+    "url": "https://www.microsoft.com/en-us/research/feed/",
+    "status": "blocked",
+    "http_code": 403,
+    "total_items": 0,
+    "recent_items": 0,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "dead",
+    "scrape_score": "blocked",
+    "sample_titles": [],
+    "error": "HTTP 403"
+  },
+  {
+    "name": "OpenAI Blog",
+    "url": "https://openai.com/blog/rss/",
+    "status": "blocked",
+    "http_code": 403,
+    "total_items": 0,
+    "recent_items": 0,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "dead",
+    "scrape_score": "blocked",
+    "sample_titles": [],
+    "error": "HTTP 403"
+  },
+  {
+    "name": "Unite.AI",
+    "url": "https://www.unite.ai/feed/",
+    "status": "parse_error",
+    "http_code": 200,
+    "total_items": 0,
+    "recent_items": 0,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "dead",
+    "scrape_score": "ok",
+    "sample_titles": [],
+    "error": "No entries parsed"
+  },
+  {
+    "name": "Reuters Tech",
+    "url": "https://www.reutersagency.com/feed/?best-topics=tech",
+    "status": "error",
+    "http_code": 404,
+    "total_items": 0,
+    "recent_items": 0,
+    "ai_relevant_items": 0,
+    "ai_relevance_pct": 0.0,
+    "recency_score": "dead",
+    "scrape_score": "dead",
+    "sample_titles": [],
+    "error": "HTTP 404"
+  }
+]

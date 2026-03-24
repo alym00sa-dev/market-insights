@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  arangodb:
+    image: arangodb:latest
+    container_name: market_intel_arango
+    ports:
+      - "8529:8529"
+    environment:
+      ARANGO_ROOT_PASSWORD: ${ARANGO_PASSWORD:-password}
+    volumes:
+      - arango_data:/var/lib/arangodb3
+    restart: unless-stopped
+
+volumes:
+  arango_data:
