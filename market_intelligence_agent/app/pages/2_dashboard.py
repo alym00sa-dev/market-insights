@@ -16,9 +16,6 @@ from graph.queries import (
 )
 from scheduler import cron
 
-# Start the background scheduler once per process
-cron.start()
-
 st.title("Dashboard")
 
 # ── Sidebar: pipeline controls + source health ────────────────────────────────
@@ -34,10 +31,7 @@ with st.sidebar:
     if sched_status["last_run_time"]:
         st.caption(f"Last pull: {sched_status['last_run_time'][:19].replace('T', ' ')}")
     else:
-        st.caption("Last pull: Never")
-
-    if sched_status["next_run_time"]:
-        st.caption(f"Next: {sched_status['next_run_time'][:19].replace('T', ' ')}")
+        st.caption("Pipeline runs automatically via Render worker.")
 
     if sched_status["is_running"]:
         st.button("Running...", disabled=True, use_container_width=True)
