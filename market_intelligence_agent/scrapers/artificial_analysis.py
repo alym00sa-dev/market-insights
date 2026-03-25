@@ -130,7 +130,7 @@ def _model_to_article(model: dict, player_key: str) -> dict:
     creator = (model.get("model_creator") or {}).get("name", "Unknown")
     release_date = model.get("release_date")
 
-    title = f"{creator} — {name}: AI benchmark profile"
+    title = f"{creator} — {name}: model benchmark profile"
     url = MODEL_PAGE_URL.format(slug=slug)
     summary = _format_summary(model)
 

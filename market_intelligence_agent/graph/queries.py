@@ -12,22 +12,37 @@ def get_events_for_player(
     days: int = None,
 ) -> list[dict]:
     db = get_db()
-    filters = []
     bind_vars = {"player_key": f"ai_players/{player_key}", "limit": limit}
 
+    # model_benchmark events are always included — they're standing capability
+    # data, not timestamped news, so the date filter doesn't apply to them.
+    benchmarks_aql = """
+    FOR v, edge IN 1..1 OUTBOUND @player_key player_events
+        LET e = DOCUMENT(edge._to)
+        FILTER e.event_type == 'model_benchmark'
+        SORT e.sources[0].published_date DESC
+        RETURN e
+    """
+    benchmarks = list(db.aql.execute(benchmarks_aql, bind_vars={"player_key": f"ai_players/{player_key}"}))
+
+    # News/other events — apply date + event_type filters
+    news_filters = []
+    news_bind = {"player_key": f"ai_players/{player_key}", "limit": limit}
+
     if event_type:
-        filters.append("FILTER e.event_type == @event_type")
-        bind_vars["event_type"] = event_type
+        news_filters.append("FILTER e.event_type == @event_type")
+        news_bind["event_type"] = event_type
+    else:
+        news_filters.append("FILTER e.event_type != 'model_benchmark'")
 
     if days:
-        filters.append(
+        news_filters.append(
             "FILTER DATE_DIFF(DATE_ISO8601(e.sources[0].published_date), DATE_NOW(), 'd') <= @days"
         )
-        bind_vars["days"] = days
+        news_bind["days"] = days
 
-    filter_str = "\n        ".join(filters)
-
-    aql = f"""
+    filter_str = "\n        ".join(news_filters)
+    news_aql = f"""
     FOR v, edge IN 1..1 OUTBOUND @player_key player_events
         LET e = DOCUMENT(edge._to)
         LET pub_date = e.sources[0].published_date
@@ -36,7 +51,10 @@ def get_events_for_player(
         LIMIT @limit
         RETURN e
     """
-    return list(db.aql.execute(aql, bind_vars=bind_vars))
+    news = list(db.aql.execute(news_aql, bind_vars=news_bind))
+
+    # Benchmarks first, then news sorted by date
+    return benchmarks + news
 
 
 def get_recent_events_all_players(limit: int = 50, days: int = 7) -> list[dict]:

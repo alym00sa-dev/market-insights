@@ -56,6 +56,20 @@ with st.sidebar:
 
     st.divider()
 
+    # Date filter
+    st.header("Time Range")
+    DATE_OPTIONS = {
+        "Last 7 days": 7,
+        "Last 30 days": 30,
+        "Last 60 days": 60,
+        "Last 90 days": 90,
+        "All time": None,
+    }
+    selected_range = st.selectbox("Show events from", list(DATE_OPTIONS.keys()), index=3)
+    days_filter = DATE_OPTIONS[selected_range]
+
+    st.divider()
+
     # Source health
     st.header("Sources")
     try:
@@ -114,13 +128,14 @@ SENTIMENT_COLOR = {"positive": "green", "negative": "red", "neutral": "gray"}
 for tab, (player_key, player_name) in zip(tabs, PLAYERS):
     with tab:
         try:
-            events = get_events_for_player(player_key, limit=15, days=90)
+            events = get_events_for_player(player_key, limit=50, days=days_filter)
         except Exception as e:
             st.error(f"Could not load events: {e}")
             continue
 
         if not events:
-            st.caption(f"No events found for {player_name} in the last 90 days.")
+            label = selected_range.lower() if days_filter else "all time"
+            st.caption(f"No events found for {player_name} in {label}.")
             continue
 
         for event in events:

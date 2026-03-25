@@ -12,7 +12,7 @@ SYSTEM_PROMPT = """You are a structured data extractor for a market intelligence
 
 Given a news article title and summary, extract the following as JSON:
 - description: a full paragraph in plain English covering what happened, who is involved, the context, and why it matters — this is the primary record of the event
-- event_type: one of [product_launch, partnership, funding, hiring, policy, research, infrastructure, legal, earnings, acquisition, other]
+- event_type: one of [product_launch, partnership, funding, hiring, policy, research, infrastructure, legal, earnings, acquisition, model_benchmark, other] — use model_benchmark for articles about model capability scores, benchmarks, or pricing data
 - sentiment: one of [positive, neutral, negative]
 - significance_score: integer 1-10 (10 = market-defining, 1 = minor/routine)
 - key_entities: list of strings — specific people, products, or organizations mentioned beyond the main AI player

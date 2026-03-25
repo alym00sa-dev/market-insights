@@ -123,11 +123,12 @@ def _assemble(question: str, briefs: list[dict], history: list[dict] = None) -> 
         return f"Assembly failed ({e}). Raw findings:\n{briefs_text}"
 
 
-def ask(question: str, history: list[dict] = None) -> str:
+def ask(question: str, history: list[dict] = None, days_filter: int = None) -> str:
     """
     Main entry point for the chat interface.
     Takes a natural language question and returns a markdown-formatted answer.
     history: list of {"role": "user"|"assistant", "content": str} from prior turns.
+    days_filter: if provided, overrides the LLM-inferred time frame (None = all time).
     """
     players = _load_players()
 
@@ -151,7 +152,8 @@ def ask(question: str, history: list[dict] = None) -> str:
         relevant_players = ALL_PLAYERS
 
     search_terms = plan.get("search_terms", [])
-    days = plan.get("time_frame_days", 90)
+    # Sidebar filter overrides LLM-inferred time frame when explicitly set
+    days = days_filter if days_filter is not None else plan.get("time_frame_days", 90)
 
     # Step 2: Route to Research Leads in parallel
     briefs = []

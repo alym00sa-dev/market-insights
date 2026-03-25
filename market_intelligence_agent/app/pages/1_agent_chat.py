@@ -29,6 +29,14 @@ MODEL_OPTIONS = {
     "GPT-4o mini": ("openai", "gpt-4o-mini"),
 }
 
+DATE_OPTIONS = {
+    "Last 7 days": 7,
+    "Last 30 days": 30,
+    "Last 60 days": 60,
+    "Last 90 days": 90,
+    "All time": None,
+}
+
 with st.sidebar:
     st.header("Filters")
 
@@ -37,17 +45,9 @@ with st.sidebar:
     selected_provider, selected_model = MODEL_OPTIONS[model_choice]
     set_active_model(selected_provider, selected_model)
 
-
-    # TODO: wire these filters into the ask() call
-    # player_options = [
-    #     "All", "OpenAI", "Anthropic", "Google / DeepMind",
-    #     "Meta AI", "Microsoft", "Emerging Players",
-    # ]
-    # selected_player = st.selectbox("Hyperscaler", player_options)
-    # date_range = st.selectbox(
-    #     "Time Frame",
-    #     ["Last 7 days", "Last 30 days", "Last 90 days", "All time"],
-    # )
+    # Date range filter
+    selected_range = st.selectbox("Time Frame", list(DATE_OPTIONS.keys()), index=3)
+    days_filter = DATE_OPTIONS[selected_range]
 
     st.divider()
 
@@ -136,7 +136,7 @@ Return JSON only:
         with st.spinner("Researching..."):
             try:
                 history = st.session_state.messages[-8:-1]  # last 4 exchanges, excluding current
-                reply = ask(prompt, history=history)
+                reply = ask(prompt, history=history, days_filter=days_filter)
             except Exception as e:
                 reply = f"_Agent error: {e}_"
         st.markdown(reply.replace("$", "\\$"))
