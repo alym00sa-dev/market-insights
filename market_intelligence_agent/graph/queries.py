@@ -17,6 +17,8 @@ def get_events_for_player(
     news_filters = []
     news_bind = {"player_key": f"ai_players/{player_key}", "limit": limit}
 
+    news_filters.append("FILTER e.significance_score >= 4")
+
     if event_type:
         news_filters.append("FILTER e.event_type == @event_type")
         news_bind["event_type"] = event_type
