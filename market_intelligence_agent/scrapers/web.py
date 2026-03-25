@@ -17,40 +17,10 @@ def _content_hash(url: str, title: str) -> str:
     return hashlib.md5(normalized.encode()).hexdigest()
 
 
-def _extract_published_date(soup: BeautifulSoup) -> str:
-    """Try to find the article's published date from common HTML patterns."""
-    # 1. <meta property="article:published_time">
-    meta = soup.find("meta", {"property": "article:published_time"})
-    if meta and meta.get("content"):
-        try:
-            return datetime.fromisoformat(meta["content"].replace("Z", "+00:00")).isoformat()
-        except Exception:
-            pass
-
-    # 2. <time datetime="...">
-    time_tag = soup.find("time", {"datetime": True})
-    if time_tag:
-        try:
-            return datetime.fromisoformat(time_tag["datetime"].replace("Z", "+00:00")).isoformat()
-        except Exception:
-            pass
-
-    # 3. Any <time> tag with parseable text
-    time_tag = soup.find("time")
-    if time_tag:
-        try:
-            from dateutil import parser as dateparser
-            return dateparser.parse(time_tag.get_text(strip=True)).replace(tzinfo=timezone.utc).isoformat()
-        except Exception:
-            pass
-
-    return datetime.now(timezone.utc).isoformat()
-
-
 def scrape_url(url: str, source_name: str) -> dict | None:
     """
     Scrape a single URL and return a raw article dict, or None on failure.
-    Extracts title, best-effort body text, and published date.
+    Extracts title and best-effort body text.
     """
     try:
         resp = requests.get(url, headers=HEADERS, timeout=15, allow_redirects=True)
@@ -79,7 +49,7 @@ def scrape_url(url: str, source_name: str) -> dict | None:
             "title": title.strip(),
             "url": url,
             "summary": summary[:1000],
-            "published_date": _extract_published_date(soup),
+            "published_date": datetime.now(timezone.utc).isoformat(),
             "source_name": source_name,
             "raw_content_hash": _content_hash(url, title),
         }
@@ -116,30 +86,17 @@ def scrape_anthropic_news(limit: int = 20) -> list[dict]:
                 continue
             seen_urls.add(full_url)
 
-            # Try to extract date from raw link text
-            raw = link.get_text(strip=True)
-            date_str = datetime.now(timezone.utc).isoformat()
-            date_match = re.search(
-                r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},?\s+\d{4}",
-                raw, flags=re.IGNORECASE,
-            )
-            if date_match:
-                try:
-                    from dateutil import parser as dateparser
-                    date_str = dateparser.parse(date_match.group(0)).replace(tzinfo=timezone.utc).isoformat()
-                except Exception:
-                    pass
-
             # Prefer the heading element inside the link for a clean title
             heading = link.find(["h2", "h3", "h4"])
             if heading:
                 title = heading.get_text(strip=True)
             else:
-                # Strip category + date prefix from raw text to get clean title
+                # Fallback: strip category + date prefix from raw text
+                raw = link.get_text(strip=True)
                 title = re.sub(
                     r"^(Announcements?|Products?|Policy|Research|News)?"
                     r"\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+\d{1,2},?\s+\d{4}"
-                    r"\s*(Announcements?|Products?|Policy|Research|News)?",
+                    r"(Announcements?|Products?|Policy|Research|News)?",
                     "", raw, flags=re.IGNORECASE,
                 ).strip()
             if not title:
@@ -149,7 +106,7 @@ def scrape_anthropic_news(limit: int = 20) -> list[dict]:
                 "title": title,
                 "url": full_url,
                 "summary": "",
-                "published_date": date_str,
+                "published_date": datetime.now(timezone.utc).isoformat(),
                 "source_name": "Anthropic News",
                 "raw_content_hash": _content_hash(full_url, title),
             })
