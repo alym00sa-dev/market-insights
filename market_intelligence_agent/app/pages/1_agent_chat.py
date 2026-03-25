@@ -23,6 +23,8 @@ MODEL_OPTIONS = {
     "Claude Sonnet 4.6": ("claude", "claude-sonnet-4-6"),
     "Claude Opus 4.6": ("claude", "claude-opus-4-6"),
     "Claude Haiku 4.5": ("claude", "claude-haiku-4-5-20251001"),
+    "GPT-5.4": ("openai", "gpt-5.4"),
+    "GPT-5.4 mini": ("openai", "gpt-5.4-mini"),
     "GPT-4o": ("openai", "gpt-4o"),
     "GPT-4o mini": ("openai", "gpt-4o-mini"),
 }
