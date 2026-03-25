@@ -154,7 +154,7 @@ for tab, (player_key, player_name) in zip(tabs, PLAYERS):
                         st.markdown(f"**[{event.get('title', 'Untitled')}]({url})**")
                     else:
                         st.markdown(f"**{event.get('title', 'Untitled')}**")
-                    st.caption(f"{event_type} · {source_name} · {date} · Significance: {sig}/10 · :{SENTIMENT_COLOR.get(sentiment, 'gray')}[{sentiment}]")
+                    st.caption(f"{event_type} · {source_name} · {date} · Significance: {sig}/10 · :{SENTIMENT_COLOR.get(sentiment, 'gray')}[{sentiment}]".replace("$", "\\$"))
                 with badge_col:
                     source_count = event.get("source_count", 1)
                     if source_count > 1:
@@ -162,8 +162,8 @@ for tab, (player_key, player_name) in zip(tabs, PLAYERS):
 
                 description = event.get("description", "")
                 if description:
-                    st.write(description)
+                    st.write(description.replace("$", "\\$"))
 
                 analyst_notes = event.get("analyst_notes", "")
                 if analyst_notes:
-                    st.caption(f"**Analyst:** {analyst_notes}")
+                    st.caption(f"**Analyst:** {analyst_notes}".replace("$", "\\$"))
