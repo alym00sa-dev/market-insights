@@ -23,7 +23,7 @@ st.title("Dashboard")
 
 # ── Sidebar: pipeline controls + source health ────────────────────────────────
 with st.sidebar:
-    st.header("Pipeline")
+    st.header("Market Sourcing Pipeline")
 
     sched_status = cron.get_status()
 
