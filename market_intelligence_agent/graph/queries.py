@@ -12,20 +12,8 @@ def get_events_for_player(
     days: int = None,
 ) -> list[dict]:
     db = get_db()
-    bind_vars = {"player_key": f"ai_players/{player_key}", "limit": limit}
 
-    # model_benchmark events are always included — they're standing capability
-    # data, not timestamped news, so the date filter doesn't apply to them.
-    benchmarks_aql = """
-    FOR v, edge IN 1..1 OUTBOUND @player_key player_events
-        LET e = DOCUMENT(edge._to)
-        FILTER e.event_type == 'model_benchmark'
-        SORT e.sources[0].published_date DESC
-        RETURN e
-    """
-    benchmarks = list(db.aql.execute(benchmarks_aql, bind_vars={"player_key": f"ai_players/{player_key}"}))
-
-    # News/other events — apply date + event_type filters
+    # News/other events only — benchmarks are excluded from the dashboard feed
     news_filters = []
     news_bind = {"player_key": f"ai_players/{player_key}", "limit": limit}
 
@@ -51,10 +39,7 @@ def get_events_for_player(
         LIMIT @limit
         RETURN e
     """
-    news = list(db.aql.execute(news_aql, bind_vars=news_bind))
-
-    # Benchmarks first, then news sorted by date
-    return benchmarks + news
+    return list(db.aql.execute(news_aql, bind_vars=news_bind))
 
 
 def get_recent_events_all_players(limit: int = 50, days: int = 7) -> list[dict]:
