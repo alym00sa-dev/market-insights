@@ -140,6 +140,70 @@ def _search_openai(query: str) -> list[dict]:
         return []
 
 
+CONTEXT_PROMPT_TEMPLATE = """Search the web for recent news about: {query}
+
+Write a concise factual summary (3-5 sentences) of the most relevant and recent events you find.
+Cite each source inline at the end of the sentence it supports, in this format: ([Outlet Name, YYYY-MM-DD](URL))
+Only report facts from what you find. Do not editorialize."""
+
+
+def _context_claude(query: str) -> str:
+    import anthropic
+
+    client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+    prompt = CONTEXT_PROMPT_TEMPLATE.format(query=query)
+
+    try:
+        response = client.messages.create(
+            model=settings.CLAUDE_MODEL,
+            max_tokens=2048,
+            tools=[{
+                "type": "web_search_20250305",
+                "name": "web_search",
+                "max_uses": 3,
+            }],
+            messages=[{"role": "user", "content": prompt}],
+        )
+        for block in response.content:
+            if block.type == "text":
+                return block.text
+    except Exception as e:
+        print(f"  [LLMSearch/Claude] Context search error for {query!r}: {e}")
+    return ""
+
+
+def _context_openai(query: str) -> str:
+    from openai import OpenAI
+
+    client = OpenAI(api_key=settings.OPENAI_API_KEY)
+    prompt = CONTEXT_PROMPT_TEMPLATE.format(query=query)
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-search-preview",
+            messages=[{"role": "user", "content": prompt}],
+        )
+        return response.choices[0].message.content or ""
+    except Exception as e:
+        print(f"  [LLMSearch/OpenAI] Context search error for {query!r}: {e}")
+    return ""
+
+
+def search_for_context(query: str) -> str:
+    """
+    Run a web search and return a narrative summary with inline citations.
+    Intended for query-time enrichment, not ingestion.
+    """
+    provider = settings.LLM_PROVIDER.lower()
+    print(f"  [LLMSearch/{provider}] Context search: {query!r}")
+
+    if provider == "claude":
+        return _context_claude(query)
+    elif provider == "openai":
+        return _context_openai(query)
+    return ""
+
+
 # ── Public API ───────────────────────────────────────────────────────────────
 
 def search(query: str) -> list[dict]:

@@ -37,3 +37,4 @@ htmlcov/
 
 # Claude Code
 .claude/
+/archive/

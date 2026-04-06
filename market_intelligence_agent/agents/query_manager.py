@@ -12,6 +12,7 @@ import yaml
 
 from agents.research_lead import research
 from llm.config import get_llm
+from scrapers.llm_search import search_for_context
 
 PLAYERS_YAML = Path(__file__).parent.parent / "config" / "players.yaml"
 
@@ -92,7 +93,7 @@ def _decompose(question: str) -> dict:
         }
 
 
-def _assemble(question: str, briefs: list[dict], history: list[dict] = None) -> str:
+def _assemble(question: str, briefs: list[dict], history: list[dict] = None, web_context: str = "") -> str:
     """Assemble research briefs into a final markdown response."""
     llm = get_llm()
 
@@ -115,7 +116,8 @@ def _assemble(question: str, briefs: list[dict], history: list[dict] = None) -> 
             history_text += f"{role}: {msg['content'][:400]}\n"
         history_text += "\n"
 
-    user_prompt = f"{history_text}User question: {question}\n\nResearch briefs:{briefs_text}"
+    web_section = f"\n\nLive web search results:\n{web_context}" if web_context else ""
+    user_prompt = f"{history_text}User question: {question}\n\nResearch briefs:{briefs_text}{web_section}"
 
     try:
         return llm.complete(ASSEMBLE_SYSTEM_PROMPT, user_prompt)
@@ -155,12 +157,17 @@ def ask(question: str, history: list[dict] = None, days_filter: int = None) -> s
     # Sidebar filter overrides LLM-inferred time frame when explicitly set
     days = days_filter if days_filter is not None else plan.get("time_frame_days", 90)
 
-    # Step 2: Route to Research Leads in parallel
+    # Step 2: Route to Research Leads + live web search in parallel
     briefs = []
-    print(f"[QueryManager] Dispatching to {len(relevant_players)} research lead(s)...")
+    web_context = ""
+    print(f"[QueryManager] Dispatching to {len(relevant_players)} research lead(s) + web search...")
 
-    with ThreadPoolExecutor(max_workers=len(relevant_players)) as executor:
-        futures = {
+    web_query = question if not search_terms else f"{question} ({', '.join(search_terms[:3])})"
+
+    with ThreadPoolExecutor(max_workers=len(relevant_players) + 1) as executor:
+        web_future = executor.submit(search_for_context, web_query)
+
+        kg_futures = {
             executor.submit(
                 research,
                 question,
@@ -171,13 +178,19 @@ def ask(question: str, history: list[dict] = None, days_filter: int = None) -> s
             ): player_key
             for player_key in relevant_players
         }
-        for future in as_completed(futures):
-            player_key = futures[future]
+        for future in as_completed(kg_futures):
+            player_key = kg_futures[future]
             try:
                 briefs.append(future.result())
             except Exception as e:
                 print(f"[QueryManager] ResearchLead error for {player_key}: {e}")
 
+        try:
+            web_context = web_future.result()
+            print(f"[QueryManager] Web search returned {len(web_context)} chars")
+        except Exception as e:
+            print(f"[QueryManager] Web search error: {e}")
+
     # Step 3: Assemble
     print(f"[QueryManager] Assembling response from {len(briefs)} brief(s)...")
-    return _assemble(question, briefs, history=history)
+    return _assemble(question, briefs, history=history, web_context=web_context)
