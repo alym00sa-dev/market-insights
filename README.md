@@ -6,6 +6,51 @@ A continuous intelligence system that tracks AI market activity across major pla
 
 ---
 
+> **Note: The ArangoDB instance backing this app has expired and the data is no longer available.**
+> The live app is currently non-functional. To run this locally or redeploy, you will need to provision a new ArangoDB instance and repopulate the knowledge graph from scratch. See the [Starting fresh](#starting-fresh) section below.
+
+---
+
+## Starting fresh
+
+The original ArangoDB instance has expired and all data is gone. There is no compatible data export — an older SQLite database exists in the archive but uses a different schema from a prior version of the system and cannot be imported directly.
+
+To get the app running again:
+
+**1. Provision a new ArangoDB instance**
+
+Create a free ArangoDB AuraDB instance at [arangodb.com](https://arangodb.com). Copy the host URL, username, and password into your `.env` file.
+
+**2. Initialize the schema**
+
+```bash
+PYTHONPATH=. python -c "from graph.schema import init_schema; init_schema()"
+```
+
+**3. Verify the connection**
+
+```bash
+PYTHONPATH=. python market_intelligence_agent/scripts/test_db_connection.py
+```
+
+**4. Run the historical backfill** (optional, rebuilds data from Aug 2025 onward)
+
+```bash
+PYTHONPATH=. python market_intelligence_agent/scripts/backfill_historical.py
+```
+
+This pulls historical data from the Guardian API and LLM web search. Requires a valid `GUARDIAN_API_KEY` and LLM API key in your `.env` and will consume API quota.
+
+To go back further than Aug 2025, change the `FROM_DATE` variable at the top of the script to your desired start date (`YYYY-MM-DD`). To also include NYT Archive data, add the `--nyt-archive` flag — note this is rate-limited and adds ~12 seconds per month of history.
+
+**5. Start the live pipeline**
+
+```bash
+PYTHONPATH=. python market_intelligence_agent/pipeline_worker.py
+```
+
+---
+
 ## How it works
 
 Articles are collected from RSS feeds, news APIs (NewsAPI, Guardian, NYT), and LLM-native web search. Each article is processed by an extraction agent that produces structured events with type, sentiment, significance, and key entities. A deduplication layer prevents redundant data using content hashing and semantic comparison.
@@ -14,7 +59,7 @@ All events are stored as nodes in a knowledge graph hosted on ArangoDB. Players 
 
 When a user asks a question, a query manager decomposes it, identifies relevant players, and spins up parallel Research Lead agents — one per player. Each Research Lead retrieves events from the graph and synthesizes a cited brief. The final response is assembled from those briefs.
 
-The pipeline runs on a configurable schedule (default: every 4 hours) via a background worker deployed on Render.
+The pipeline runs on a configurable schedule (default: every 4 hours) within the Streamlit app process via APScheduler.
 
 ---
 
@@ -55,7 +100,7 @@ Streamlit UI
 
 **LLM layer:** Claude and OpenAI are both supported and switchable at runtime. Default is Claude Sonnet.
 
-**Knowledge graph:** Hosted on ArangoDB AuraDB (free tier, expiring soon). The graph stores players, events, and edges connecting them. AQL queries power all retrieval.
+**Knowledge graph:** Hosted on ArangoDB AuraDB. The graph stores players, events, and edges connecting them. AQL queries power all retrieval.
 
 ---
 
@@ -70,7 +115,8 @@ market_intelligence_agent/
     llm/            LLM abstraction layer (Claude and OpenAI providers)
     scrapers/       Data source connectors (RSS, APIs, web, LLM search)
     scheduler/      Background scheduler (APScheduler)
-    pipeline_worker.py   Background worker entry point (used for Render deployment)
+    scripts/        Utility scripts (backfill_historical.py, test_db_connection.py)
+    pipeline_worker.py   Background worker entry point
     requirements.txt
     .env.example
 ```
