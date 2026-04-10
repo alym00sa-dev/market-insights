@@ -2,7 +2,7 @@
 
 A continuous intelligence system that tracks AI market activity across major players — OpenAI, Anthropic, Google, Meta, Microsoft, and emerging competitors. It ingests news from multiple sources, extracts structured events using an LLM, stores them in a knowledge graph, and answers natural language questions grounded in that data.
 
-**Live app:** https://market-intelligence-gf.streamlit.app/
+**Live app, BUT NO LONGER FUNCTIONING - see ArangoDB note below:** https://market-intelligence-gf.streamlit.app/
 
 ---
 
