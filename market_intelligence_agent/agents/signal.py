@@ -7,9 +7,11 @@ Two-layer deduplication:
 If an event is a semantic duplicate, the existing node is updated with the
 new source rather than creating a new one (multi-source corroboration model).
 """
+import json
+import uuid
 from datetime import datetime, timezone
 
-from graph.client import get_db
+from graph.client import run_query
 from llm.config import get_llm
 
 DEDUP_SYSTEM_PROMPT = """You are a market intelligence deduplication assistant.
@@ -22,7 +24,7 @@ Different event = a follow-up, update, reaction, or distinct but related story.
 Return JSON only:
 {
   "is_duplicate": true | false,
-  "duplicate_of": "<event _key if is_duplicate, else null>"
+  "duplicate_of": "<event key if is_duplicate, else null>"
 }"""
 
 DEDUP_SCHEMA = {
@@ -35,31 +37,28 @@ DEDUP_SCHEMA = {
 }
 
 
-def _hash_exists(db, content_hash: str) -> bool:
-    """Layer 1: check if this exact content hash already exists."""
-    aql = "FOR e IN events FILTER e.raw_content_hash == @hash LIMIT 1 RETURN e._key"
-    cursor = db.aql.execute(aql, bind_vars={"hash": content_hash})
-    return len(list(cursor)) > 0
-
-
-def _get_recent_events(db, player_key: str, limit: int = 10) -> list[dict]:
-    """Fetch recent events for a player to compare against."""
-    aql = """
-    FOR v, edge IN 1..1 OUTBOUND @player_key player_events
-        LET e = DOCUMENT(edge._to)
-        SORT e.first_seen DESC
-        LIMIT @limit
-        RETURN { _key: e._key, title: e.title, scraped_content: e.scraped_content, event_type: e.event_type }
-    """
-    cursor = db.aql.execute(
-        aql,
-        bind_vars={"player_key": f"ai_players/{player_key}", "limit": limit},
+def _hash_exists(content_hash: str) -> bool:
+    results = run_query(
+        "MATCH (e:Event {raw_content_hash: $hash}) RETURN e.key LIMIT 1",
+        {"hash": content_hash},
     )
-    return list(cursor)
+    return len(results) > 0
+
+
+def _get_recent_events(player_key: str, limit: int = 10) -> list[dict]:
+    return run_query(
+        """
+        MATCH (p:Player {key: $player_key})-[:INVOLVED_IN]->(e:Event)
+        RETURN e.key AS _key, e.title AS title,
+               e.scraped_content AS scraped_content, e.event_type AS event_type
+        ORDER BY e.first_seen DESC
+        LIMIT $limit
+        """,
+        {"player_key": player_key, "limit": limit},
+    )
 
 
 def _check_semantic_duplicate(candidate: dict, recent_events: list[dict]) -> tuple[bool, str | None]:
-    """Layer 2: LLM semantic duplicate check."""
     if not recent_events:
         return False, None
 
@@ -81,38 +80,51 @@ def _check_semantic_duplicate(candidate: dict, recent_events: list[dict]) -> tup
         return False, None
 
 
-def _append_source(db, event_key: str, new_source: dict):
-    """Append a new source to an existing event node."""
-    now = datetime.now(timezone.utc).isoformat()
-    aql = """
-    FOR e IN events
-        FILTER e._key == @key
-        UPDATE e WITH {
-            sources: APPEND(e.sources, [@source]),
-            source_count: e.source_count + 1,
-            last_updated: @now
-        } IN events
-    """
-    db.aql.execute(aql, bind_vars={"key": event_key, "source": new_source, "now": now})
+def _append_source(event_key: str, new_source: dict):
+    result = run_query(
+        "MATCH (e:Event {key: $key}) RETURN e.sources_json AS sources_json",
+        {"key": event_key},
+    )
+    if not result:
+        return
+    sources = json.loads(result[0].get("sources_json") or "[]")
+    sources.append(new_source)
+    run_query(
+        """
+        MATCH (e:Event {key: $key})
+        SET e.sources_json = $sources_json,
+            e.source_count = e.source_count + 1,
+            e.last_updated = $now
+        """,
+        {
+            "key": event_key,
+            "sources_json": json.dumps(sources),
+            "now": datetime.now(timezone.utc).isoformat(),
+        },
+    )
     print(f"  [Signal] Appended source to existing event: {event_key}")
 
 
-def _insert_event(db, event: dict) -> str:
-    """Insert a new event node and create edges to its player(s)."""
-    events_col = db.collection("events")
-    player_events_col = db.collection("player_events")
+def _insert_event(event: dict) -> str:
+    event_key = str(uuid.uuid4())
+    player_keys = event.get("player_keys", [])
+    sources = event.get("sources", [])
 
-    doc = {k: v for k, v in event.items() if k != "player_keys"}
-    meta = events_col.insert(doc)
-    event_key = meta["_key"]
+    doc = {k: v for k, v in event.items() if k not in ("player_keys", "sources")}
+    doc["key"] = event_key
+    doc["sources_json"] = json.dumps(sources)
+    doc["published_date"] = sources[0].get("published_date", "") if sources else ""
 
-    for player_key in event.get("player_keys", []):
-        player_events_col.insert({
-            "_from": f"ai_players/{player_key}",
-            "_to": f"events/{event_key}",
-            "relationship_type": "involved_in",
-            "relevance_score": 1.0,
-        })
+    run_query("CREATE (e:Event) SET e = $props", {"props": doc})
+
+    for player_key in player_keys:
+        run_query(
+            """
+            MATCH (p:Player {key: $player_key}), (e:Event {key: $event_key})
+            CREATE (p)-[:INVOLVED_IN {relationship_type: 'involved_in', relevance_score: 1.0}]->(e)
+            """,
+            {"player_key": player_key, "event_key": event_key},
+        )
 
     print(f"  [Signal] Inserted new event: {event['title'][:60]}")
     return event_key
@@ -121,24 +133,23 @@ def _insert_event(db, event: dict) -> str:
 def process(event: dict) -> str | None:
     """
     Run the two-layer dedup pipeline for a single extracted event.
-    Returns the event _key (new or existing), or None if skipped.
+    Returns the event key (new or existing), or None if skipped.
     """
-    db = get_db()
+    if event.get("significance_score", 0) < 5:
+        print(f"  [Signal] Low significance ({event.get('significance_score')}) — skipping: {event['title'][:60]}")
+        return None
 
-    # Layer 1: hash check
-    if _hash_exists(db, event["raw_content_hash"]):
+    if _hash_exists(event["raw_content_hash"]):
         print(f"  [Signal] Hash duplicate — skipping: {event['title'][:60]}")
         return None
 
-    # Layer 2: semantic check (per player)
     new_source = event["sources"][0]
     for player_key in event.get("player_keys", []):
-        recent = _get_recent_events(db, player_key)
+        recent = _get_recent_events(player_key)
         is_dup, dup_key = _check_semantic_duplicate(event, recent)
 
         if is_dup and dup_key:
-            _append_source(db, dup_key, new_source)
+            _append_source(dup_key, new_source)
             return dup_key
 
-    # New unique event — insert
-    return _insert_event(db, event)
+    return _insert_event(event)

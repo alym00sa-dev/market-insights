@@ -10,12 +10,13 @@ Run from market_intelligence_agent/ with:
 """
 import sys
 import time
+import json
 import hashlib
 import requests
 from pathlib import Path
 from datetime import datetime, timezone, date
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).parent.parent  # market_intelligence_agent/
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -33,10 +34,10 @@ from agents.signal import process
 # To include NYT Archive data (supports back to 2012 for AI topics), pass --nyt-archive
 # when running the script. Note: NYT Archive is rate-limited to ~1 request per 12 seconds,
 # so each additional month adds ~12s of wait time.
-FROM_DATE = "2025-08-01"
+FROM_DATE = "2026-01-01"  # SMOKE TEST — change back to 2024-01-01 for full backfill
 TO_DATE   = date.today().isoformat()
 
-PLAYER_KEYS = ["openai", "anthropic", "google", "meta", "microsoft", "emerging"]
+PLAYER_KEYS = ["openai", "anthropic", "google", "meta", "microsoft", "nvidia", "emerging"]
 
 PLAYER_SEARCH_TERMS = {
     "openai":    "OpenAI ChatGPT GPT",
@@ -44,12 +45,14 @@ PLAYER_SEARCH_TERMS = {
     "google":    "Google DeepMind Gemini AI",
     "meta":      "Meta AI Llama",
     "microsoft": "Microsoft AI Copilot Azure OpenAI",
-    "emerging":  "xAI Grok Mistral AI Cohere Perplexity AI",
+    "nvidia":    "NVIDIA AI GPU Blackwell H100",
+    "emerging":  "DeepSeek Amazon Bedrock Apple Intelligence Qwen xAI Grok Mistral Thinking Machines Lab",
 }
 
-# Aug 2025 → current month
+# Build month list dynamically from FROM_DATE
 MONTHS = []
-y, m = 2025, 8
+_from = date.fromisoformat(FROM_DATE)
+y, m = _from.year, _from.month
 while (y, m) <= (date.today().year, date.today().month):
     MONTHS.append((y, m))
     m += 1
@@ -207,30 +210,61 @@ def fetch_nyt_archive_historical() -> list[dict]:
     return articles
 
 
+# ── Checkpoint ────────────────────────────────────────────────────────────────
+
+CHECKPOINT_FILE = ROOT / "scripts" / f"backfill_checkpoint_{FROM_DATE}.json"
+
+
+def _save_checkpoint(tagged: list[dict]):
+    CHECKPOINT_FILE.write_text(json.dumps(tagged, indent=2))
+    print(f"[Backfill] Checkpoint saved: {len(tagged)} articles → {CHECKPOINT_FILE.name}")
+
+
+def _load_checkpoint() -> list[dict] | None:
+    if CHECKPOINT_FILE.exists():
+        tagged = json.loads(CHECKPOINT_FILE.read_text())
+        print(f"[Backfill] Loaded checkpoint: {len(tagged)} tagged articles from {CHECKPOINT_FILE.name}")
+        print(f"[Backfill] Skipping fetch — delete {CHECKPOINT_FILE.name} to re-fetch from sources.")
+        return tagged
+    return None
+
+
 # ── Pipeline ──────────────────────────────────────────────────────────────────
 
-def run(include_nyt_archive: bool = False):
+def run(include_nyt_archive: bool = True):
+    from graph.client import wait_for_connection
+    print("Checking Neo4j connectivity...")
+    if not wait_for_connection(max_wait=120, interval=10):
+        print("Aborting backfill — Neo4j unreachable.")
+        return
+
     players = _load_players()
 
     print(f"\n=== Historical Backfill: {FROM_DATE} → {TO_DATE} ===\n")
 
-    # Collect
-    guardian_articles = fetch_guardian_historical()
-    llm_articles = fetch_llm_historical()
-    nyt_articles = fetch_nyt_archive_historical() if include_nyt_archive else []
-    if not include_nyt_archive:
-        print("[Backfill] Skipping NYT Archive (pass include_nyt_archive=True to enable)")
-    all_articles = guardian_articles + llm_articles + nyt_articles
-    print(f"\n[Backfill] Total raw articles: {len(all_articles)}")
+    # Load from checkpoint if available, otherwise fetch + tag
+    tagged = _load_checkpoint()
+    if tagged is None:
+        # Collect
+        guardian_articles = fetch_guardian_historical()
+        llm_articles = fetch_llm_historical()
+        nyt_articles = fetch_nyt_archive_historical() if include_nyt_archive else []
+        if not include_nyt_archive:
+            print("[Backfill] Skipping NYT Archive (pass include_nyt_archive=True to enable)")
+        all_articles = guardian_articles + llm_articles + nyt_articles
+        print(f"\n[Backfill] Total raw articles: {len(all_articles)}")
 
-    # Tag
-    tagged = []
-    for article in all_articles:
-        player_keys = _tag_players(article, players)
-        if player_keys:
-            article["player_keys"] = player_keys
-            tagged.append(article)
-    print(f"[Backfill] Tagged: {len(tagged)} articles")
+        # Tag
+        tagged = []
+        for article in all_articles:
+            player_keys = _tag_players(article, players)
+            if player_keys:
+                article["player_keys"] = player_keys
+                tagged.append(article)
+        print(f"[Backfill] Tagged: {len(tagged)} articles")
+
+        # Save checkpoint before extraction starts
+        _save_checkpoint(tagged)
 
     # Extract + Signal
     stats = {"extracted": 0, "inserted": 0, "skipped": 0, "failed": 0}
@@ -265,6 +299,7 @@ def run(include_nyt_archive: bool = False):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--nyt-archive", action="store_true", help="Include NYT Archive API (slow, ~12s/month)")
+    parser.add_argument("--no-nyt-archive", action="store_false", dest="nyt_archive",
+                        help="Skip NYT Archive API (included by default)")
     args = parser.parse_args()
     run(include_nyt_archive=args.nyt_archive)

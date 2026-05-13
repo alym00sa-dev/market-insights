@@ -1,8 +1,28 @@
 """
-Reusable AQL query templates for the market_intel knowledge graph.
-All functions return plain Python lists/dicts — no ArangoDB objects leak out.
+Cypher query templates for the market_intel knowledge graph.
+All functions return plain Python lists/dicts.
+
+Note: Neo4j doesn't support lists-of-maps as node properties, so the
+`sources` array (list of {name, url, published_date} dicts) is stored
+as a JSON string (`sources_json`) on Event nodes. _deserialize_event()
+converts it back to a list before returning, keeping the rest of the
+codebase unaware of this detail.
 """
-from graph.client import get_db
+import json
+from datetime import datetime, timedelta, timezone
+
+from graph.client import run_query
+
+
+def _days_ago_iso(days: int) -> str:
+    return (datetime.now(timezone.utc) - timedelta(days=days)).isoformat()
+
+
+def _deserialize_event(event: dict) -> dict:
+    if "sources_json" in event:
+        event["sources"] = json.loads(event.pop("sources_json") or "[]")
+    event["_key"] = event.get("key", "")
+    return event
 
 
 def get_events_for_player(
@@ -11,66 +31,52 @@ def get_events_for_player(
     event_type: str = None,
     days: int = None,
 ) -> list[dict]:
-    db = get_db()
-
-    # News/other events only — benchmarks are excluded from the dashboard feed
-    news_filters = []
-    news_bind = {"player_key": f"ai_players/{player_key}", "limit": limit}
-
-    news_filters.append("FILTER e.significance_score >= 4")
+    params = {"player_key": player_key, "limit": limit}
+    filters = ["e.significance_score >= 5"]
 
     if event_type:
-        news_filters.append("FILTER e.event_type == @event_type")
-        news_bind["event_type"] = event_type
+        filters.append("e.event_type = $event_type")
+        params["event_type"] = event_type
     else:
-        news_filters.append("FILTER e.event_type != 'model_benchmark'")
+        filters.append("e.event_type <> 'model_benchmark'")
 
     if days:
-        news_filters.append(
-            "FILTER DATE_DIFF(DATE_ISO8601(e.sources[0].published_date), DATE_NOW(), 'd') <= @days"
-        )
-        news_bind["days"] = days
+        filters.append("e.published_date >= $cutoff")
+        params["cutoff"] = _days_ago_iso(days)
 
-    filter_str = "\n        ".join(news_filters)
-    news_aql = f"""
-    FOR v, edge IN 1..1 OUTBOUND @player_key player_events
-        LET e = DOCUMENT(edge._to)
-        LET pub_date = e.sources[0].published_date
-        {filter_str}
-        SORT pub_date DESC
-        LIMIT @limit
-        RETURN e
+    where_clause = " AND ".join(filters)
+    cypher = f"""
+    MATCH (p:Player {{key: $player_key}})-[:INVOLVED_IN]->(e:Event)
+    WHERE {where_clause}
+    RETURN e {{.*}} AS event
+    ORDER BY e.published_date DESC
+    LIMIT $limit
     """
-    return list(db.aql.execute(news_aql, bind_vars=news_bind))
+    return [_deserialize_event(r["event"]) for r in run_query(cypher, params)]
 
 
 def get_recent_events_all_players(limit: int = 50, days: int = 7) -> list[dict]:
-    db = get_db()
-    aql = """
-    FOR e IN events
-        FILTER DATE_DIFF(DATE_ISO8601(e.published_date), DATE_NOW(), 'd') <= @days
-        SORT e.published_date DESC
-        LIMIT @limit
-        RETURN MERGE(e, {
-            players: (
-                FOR v, edge IN 1..1 INBOUND e._id player_events
-                RETURN v.name
-            )
-        })
+    cypher = """
+    MATCH (e:Event)
+    WHERE e.published_date >= $cutoff
+    WITH e, [(p:Player)-[:INVOLVED_IN]->(e) | p.name] AS players
+    RETURN e {.*, players: players} AS event
+    ORDER BY e.published_date DESC
+    LIMIT $limit
     """
-    return list(db.aql.execute(aql, bind_vars={"days": days, "limit": limit}))
+    return [
+        _deserialize_event(r["event"])
+        for r in run_query(cypher, {"cutoff": _days_ago_iso(days), "limit": limit})
+    ]
 
 
 def get_player_event_counts() -> list[dict]:
-    db = get_db()
-    aql = """
-    FOR p IN ai_players
-        LET count = LENGTH(
-            FOR v, e IN 1..1 OUTBOUND p._id player_events RETURN 1
-        )
-        RETURN { player: p.name, key: p._key, count: count }
+    cypher = """
+    MATCH (p:Player)
+    OPTIONAL MATCH (p)-[:INVOLVED_IN]->(e:Event)
+    RETURN p.name AS player, p.key AS key, count(e) AS count
     """
-    return list(db.aql.execute(aql))
+    return run_query(cypher)
 
 
 def search_events(
@@ -78,91 +84,73 @@ def search_events(
     player_key: str = None,
     limit: int = 30,
 ) -> list[dict]:
-    db = get_db()
-    bind_vars = {"limit": limit}
+    params = {"terms": [t.lower() for t in query_terms], "limit": limit}
 
-    player_filter = ""
     if player_key:
-        player_filter = """
-        LET player_event_ids = (
-            FOR v, edge IN 1..1 OUTBOUND CONCAT('ai_players/', @player_key) player_events
-            RETURN edge._to
-        )
-        FILTER e._id IN player_event_ids
+        cypher = """
+        MATCH (p:Player {key: $player_key})-[:INVOLVED_IN]->(e:Event)
+        WHERE ALL(term IN $terms WHERE
+            toLower(e.title) CONTAINS term OR toLower(e.description) CONTAINS term)
+        RETURN e {.*} AS event
+        ORDER BY e.published_date DESC
+        LIMIT $limit
         """
-        bind_vars["player_key"] = player_key
+        params["player_key"] = player_key
+    else:
+        cypher = """
+        MATCH (e:Event)
+        WHERE ALL(term IN $terms WHERE
+            toLower(e.title) CONTAINS term OR toLower(e.description) CONTAINS term)
+        RETURN e {.*} AS event
+        ORDER BY e.published_date DESC
+        LIMIT $limit
+        """
 
-    term_filters = " AND ".join(
-        f"(CONTAINS(LOWER(e.title), LOWER(@term{i})) OR CONTAINS(LOWER(e.description), LOWER(@term{i})))"
-        for i, _ in enumerate(query_terms)
-    )
-    for i, term in enumerate(query_terms):
-        bind_vars[f"term{i}"] = term
-
-    aql = f"""
-    FOR e IN events
-        {player_filter}
-        FILTER {term_filters}
-        SORT e.sources[0].published_date DESC
-        LIMIT @limit
-        RETURN e
-    """
-    return list(db.aql.execute(aql, bind_vars=bind_vars))
+    return [_deserialize_event(r["event"]) for r in run_query(cypher, params)]
 
 
 def get_knowledge_range() -> dict:
-    """Returns the earliest first_seen and latest last_updated across all events."""
-    db = get_db()
-    aql = """
-    LET earliest = MIN(
-        FOR e IN events
-            FOR s IN e.sources
-                FILTER s.published_date != null AND s.published_date != ""
-                RETURN s.published_date
-    )
-    LET latest = MAX(
-        FOR e IN events
-            FOR s IN e.sources
-                FILTER s.published_date != null AND s.published_date != ""
-                RETURN s.published_date
-    )
-    RETURN { earliest: earliest, latest: latest }
+    cypher = """
+    MATCH (e:Event)
+    WHERE e.published_date IS NOT NULL AND e.published_date <> ''
+    RETURN min(e.published_date) AS earliest, max(e.published_date) AS latest
     """
-    result = list(db.aql.execute(aql))
+    result = run_query(cypher)
     return result[0] if result else {"earliest": None, "latest": None}
 
 
 def get_ingestion_stats() -> dict:
-    """Returns total events, events today, and events this week."""
-    db = get_db()
-    aql = """
-    LET total = LENGTH(events)
-    LET today = LENGTH(
-        FOR e IN events
-            FILTER DATE_DIFF(DATE_ISO8601(e.first_seen), DATE_NOW(), 'd') < 1
-            RETURN 1
-    )
-    LET this_week = LENGTH(
-        FOR e IN events
-            FILTER DATE_DIFF(DATE_ISO8601(e.first_seen), DATE_NOW(), 'd') <= 7
-            RETURN 1
-    )
-    RETURN { total: total, today: today, this_week: this_week }
+    now = datetime.now(timezone.utc)
+    cypher = """
+    MATCH (e:Event)
+    RETURN
+        count(e) AS total,
+        sum(CASE WHEN e.first_seen >= $today_cutoff THEN 1 ELSE 0 END) AS today,
+        sum(CASE WHEN e.first_seen >= $week_cutoff THEN 1 ELSE 0 END) AS this_week
     """
-    result = list(db.aql.execute(aql))
+    result = run_query(cypher, {
+        "today_cutoff": (now - timedelta(days=1)).isoformat(),
+        "week_cutoff": (now - timedelta(days=7)).isoformat(),
+    })
     return result[0] if result else {"total": 0, "today": 0, "this_week": 0}
 
 
 def get_source_health() -> list[dict]:
-    """Returns event counts per source outlet for the dashboard."""
-    db = get_db()
-    aql = """
-    FOR e IN events
-        FOR s IN e.sources
-            FILTER s.name != null AND s.name != ""
-            COLLECT source = s.name
-            AGGREGATE count = LENGTH(1), latest = MAX(s.published_date)
-            SORT count DESC
-            RETURN { source, count, latest }
-    """
-    return list(db.aql.execute(aql))
+    rows = run_query("MATCH (e:Event) RETURN e.sources_json AS sources_json")
+    counts: dict[str, int] = {}
+    latest: dict[str, str] = {}
+    for row in rows:
+        sources = json.loads(row.get("sources_json") or "[]")
+        for s in sources:
+            name = s.get("name", "")
+            if not name:
+                continue
+            counts[name] = counts.get(name, 0) + 1
+            date = s.get("published_date", "")
+            if date and date > latest.get(name, ""):
+                latest[name] = date
+    return sorted(
+        [{"source": k, "count": v, "latest": latest.get(k)} for k, v in counts.items()],
+        key=lambda x: x["count"],
+        reverse=True,
+    )

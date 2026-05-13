@@ -74,6 +74,27 @@ players:
     description: "Microsoft's AI products and Azure AI platform"
     is_catch_all: false
 
+  - key: nvidia
+    name: NVIDIA
+    aliases:
+      - "NVIDIA"
+      - "NVidia"
+      - "CUDA"
+      - "NIM"
+      - "DGX"
+      - "Hopper"
+      - "Blackwell"
+      - "NeMo"
+      - "Jetson"
+      - "H100"
+      - "H200"
+      - "GB200"
+      - "NVIDIA AI"
+      - "NVIDIA NIM"
+    website: https://nvidia.com/ai
+    description: "NVIDIA's AI hardware, software, and cloud platforms powering AI infrastructure"
+    is_catch_all: false
+
   - key: emerging
     name: Emerging Players
     aliases:
@@ -83,7 +104,7 @@ players:
       - "Cohere"
       - "Perplexity"
       - "Stability AI"
-      - "Runway"
+      - "Runway AI"
       - "ElevenLabs"
       - "Midjourney"
       - "Together AI"
@@ -91,6 +112,22 @@ players:
       - "Inflection"
       - "Databricks"
       - "Hugging Face"
+      - "DeepSeek"
+      - "DeepSeek-R1"
+      - "DeepSeek-V3"
+      - "Amazon Bedrock"
+      - "Amazon Nova"
+      - "AWS AI"
+      - "Apple Intelligence"
+      - "Apple AI"
+      - "Qwen"
+      - "Alibaba AI"
+      - "Scale AI"
+      - "Cognition AI"
+      - "Cognition Labs"
+      - "Devin"
+      - "Thinking Machines Lab"
+      - "Thinking Machines"
     website: null
-    description: "Notable AI companies and models outside the five major hyperscalers"
+    description: "Notable AI companies and models outside the major hyperscalers"
     is_catch_all: true

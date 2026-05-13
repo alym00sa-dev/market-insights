@@ -6,9 +6,15 @@ it is relevant to via alias matching against players.yaml.
 from pathlib import Path
 from typing import Optional
 
+import re
 import yaml
 
 PLAYERS_YAML = Path(__file__).parent.parent / "config" / "players.yaml"
+
+
+def _alias_matches(alias: str, text: str) -> bool:
+    """Word-boundary-aware alias match to avoid substring false positives."""
+    return bool(re.search(r'\b' + re.escape(alias) + r'\b', text, re.IGNORECASE))
 
 
 def _load_players() -> list[dict]:
@@ -37,7 +43,7 @@ def _tag_players(article: dict, players: list[dict]) -> list[str]:
     title_matched = []
     for player in primary_players:
         for alias in player.get("aliases", []):
-            if alias.lower() in title:
+            if _alias_matches(alias, title):
                 title_matched.append(player["key"])
                 break
 
@@ -48,7 +54,7 @@ def _tag_players(article: dict, players: list[dict]) -> list[str]:
     summary_matched = []
     for player in primary_players:
         for alias in player.get("aliases", []):
-            if alias.lower() in summary:
+            if _alias_matches(alias, summary):
                 summary_matched.append(player["key"])
                 break
 

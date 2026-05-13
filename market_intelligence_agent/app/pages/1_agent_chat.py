@@ -13,7 +13,7 @@ st.title("Market Intelligence Agent")
 
 st.info(
     "**v1 — General AI Market Intelligence.** "
-    "This agent tracks publicly available news and model data across the five frontier AI hyperscalers. "
+    "This agent tracks publicly available news and model data across the six frontier AI hyperscalers. "
     "It does not yet have access to Gates Foundation-specific context, vertical-specific signals, or proprietary data sources.",
     icon="ℹ️",
 )
@@ -39,6 +39,19 @@ DATE_OPTIONS = {
 
 with st.sidebar:
     st.header("Filters")
+
+    # Mode selector
+    MODE_OPTIONS = {
+        "Synthesizer": "synthesizer",
+        "Retriever": "retriever",
+    }
+    mode_choice = st.selectbox(
+        "Mode",
+        list(MODE_OPTIONS.keys()),
+        index=0,
+        help="Synthesizer: AI-generated brief with citations. Retriever: raw list of matching articles, no synthesis.",
+    )
+    selected_mode = MODE_OPTIONS[mode_choice]
 
     # Model selector
     model_choice = st.selectbox("Model", list(MODEL_OPTIONS.keys()), index=0)
@@ -136,7 +149,7 @@ Return JSON only:
         with st.spinner("Researching..."):
             try:
                 history = st.session_state.messages[-8:-1]  # last 4 exchanges, excluding current
-                reply = ask(prompt, history=history, days_filter=days_filter)
+                reply = ask(prompt, history=history, days_filter=days_filter, mode=selected_mode)
             except Exception as e:
                 reply = f"_Agent error: {e}_"
         st.markdown(reply.replace("$", "\\$"))

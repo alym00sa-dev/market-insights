@@ -3,12 +3,12 @@ from llm.provider import LLMProvider
 from config.settings import settings
 
 
-@lru_cache(maxsize=4)
-def get_llm(provider: str = None) -> LLMProvider:
+@lru_cache(maxsize=8)
+def get_llm(provider: str = None, model: str = None) -> LLMProvider:
     provider = (provider or settings.LLM_PROVIDER).lower()
     if provider == "claude":
         from llm.claude_provider import ClaudeProvider
-        return ClaudeProvider()
+        return ClaudeProvider(model=model)
     elif provider == "openai":
         from llm.openai_provider import OpenAIProvider
         return OpenAIProvider()

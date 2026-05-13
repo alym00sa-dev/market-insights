@@ -1,26 +1,31 @@
 """
-Quick ArangoDB connection test.
-Run with: PYTHONPATH=. python test_db_connection.py
+Quick Neo4j connection test.
+Run with: PYTHONPATH=. python scripts/test_db_connection.py
 """
 import sys
 from pathlib import Path
-ROOT = Path(__file__).parent
+
+ROOT = Path(__file__).parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from config.settings import settings
 
-print(f"Connecting to: {settings.ARANGO_HOST}")
-print(f"Database:      {settings.ARANGO_DB}")
-print(f"User:          {settings.ARANGO_USER}")
+print(f"Connecting to: {settings.NEO4J_URI}")
+print(f"Database:      {settings.NEO4J_DATABASE}")
+print(f"User:          {settings.NEO4J_USER}")
 print()
 
-try:
-    from graph.client import get_db
-    db = get_db()
-    collections = [c["name"] for c in db.collections() if not c["name"].startswith("_")]
-    print(f"Connected successfully.")
-    print(f"Collections: {collections or '(empty — run schema init next)'}")
-except Exception as e:
-    print(f"Connection failed: {e}")
+from graph.client import wait_for_connection, run_query
+
+if not wait_for_connection(max_wait=120, interval=10):
     sys.exit(1)
+
+results = run_query(
+    "MATCH (n) RETURN labels(n)[0] AS label, count(n) AS count ORDER BY label"
+)
+if results:
+    for r in results:
+        print(f"  {r['label']}: {r['count']} nodes")
+else:
+    print("  Graph is empty — run schema init next.")

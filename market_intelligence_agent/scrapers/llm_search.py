@@ -104,6 +104,7 @@ def _search_claude(query: str) -> list[dict]:
                 "max_uses": 5,
             }],
             messages=[{"role": "user", "content": prompt}],
+            timeout=100.0,
         )
 
         # Extract the final text block (after web search tool use)
@@ -163,6 +164,7 @@ def _context_claude(query: str) -> str:
                 "max_uses": 3,
             }],
             messages=[{"role": "user", "content": prompt}],
+            timeout=100.0,
         )
         for block in response.content:
             if block.type == "text":

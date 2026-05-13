@@ -6,12 +6,13 @@ from config.settings import settings
 
 class ClaudeProvider(LLMProvider):
 
-    def __init__(self):
+    def __init__(self, model: str = None):
         self._client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+        self._model = model
 
     @property
     def model_name(self) -> str:
-        return settings.CLAUDE_MODEL
+        return self._model or settings.CLAUDE_MODEL
 
     def complete(self, system_prompt: str, user_prompt: str) -> str:
         message = self._client.messages.create(
@@ -19,6 +20,7 @@ class ClaudeProvider(LLMProvider):
             max_tokens=4096,
             system=system_prompt,
             messages=[{"role": "user", "content": user_prompt}],
+            timeout=100.0,
         )
         return message.content[0].text
 
@@ -33,6 +35,7 @@ class ClaudeProvider(LLMProvider):
             max_tokens=8096,
             system=full_system,
             messages=[{"role": "user", "content": user_prompt}],
+            timeout=100.0,
         )
         raw = message.content[0].text.strip()
         # Strip markdown code fences if present

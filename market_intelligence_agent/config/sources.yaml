@@ -46,6 +46,16 @@ general:
       tier: 1
       notes: "NYT Business section RSS — covers AI deals, funding, earnings"
 
+    - name: "Financial Times"
+      url: "https://www.ft.com/technology?format=rss"
+      tier: 1
+      notes: "FT Technology RSS — strong on deals, funding, policy; paywall limits to headline + abstract"
+
+    - name: "VentureBeat AI"
+      url: "https://venturebeat.com/ai/feed/"
+      tier: 1
+      notes: "AI-focused, strong on product launches, model releases, and funding rounds"
+
   news_api:
     - name: "NewsAPI"
       provider: "newsapi"
@@ -122,6 +132,15 @@ microsoft:
     - "Microsoft Copilot"
   web_targets: []
 
+nvidia:
+  rss: []
+  news_queries:
+    - "NVIDIA AI"
+    - "NVIDIA Blackwell"
+    - "NVIDIA NIM"
+    - "NVIDIA GPU data center"
+  web_targets: []
+
 emerging:
   rss: []
   news_queries:
@@ -129,5 +148,12 @@ emerging:
     - "Mistral AI"
     - "Cohere AI"
     - "Perplexity AI"
+    - "DeepSeek AI"
+    - "Amazon Bedrock AI"
+    - "Apple Intelligence"
+    - "Qwen Alibaba AI"
+    - "Scale AI"
+    - "Cognition Devin AI"
+    - "Thinking Machines Lab"
   web_targets: []
   notes: "Relies on general sources and news_queries; no dedicated first-party feeds"

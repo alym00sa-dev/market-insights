@@ -117,6 +117,7 @@ PLAYERS = [
     ("google", "Google / DeepMind"),
     ("meta", "Meta AI"),
     ("microsoft", "Microsoft"),
+    ("nvidia", "NVIDIA"),
     ("emerging", "Emerging Players"),
 ]
 

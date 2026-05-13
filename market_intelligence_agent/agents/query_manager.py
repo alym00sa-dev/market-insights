@@ -5,6 +5,7 @@ Handles all user-facing queries from the Streamlit chat interface:
   2. Routes to Research Lead(s) in parallel.
   3. Assembles a coherent, cited final response.
 """
+import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -20,7 +21,7 @@ DECOMPOSE_SYSTEM_PROMPT = """You are a market intelligence coordinator routing q
 
 Given a user question, decompose it into a structured routing plan.
 
-Player keys available: openai, anthropic, google, meta, microsoft, emerging
+Player keys available: openai, anthropic, google, meta, microsoft, nvidia, emerging
 
 Return JSON only:
 {
@@ -125,16 +126,77 @@ def _assemble(question: str, briefs: list[dict], history: list[dict] = None, web
         return f"Assembly failed ({e}). Raw findings:\n{briefs_text}"
 
 
-def ask(question: str, history: list[dict] = None, days_filter: int = None) -> str:
+def _parse_result_limit(question: str, default: int = 10) -> int:
+    """Extract a requested result count from the query (1-99). Defaults to 10."""
+    match = re.search(r'\b([1-9][0-9]?)\b', question)
+    if match:
+        return int(match.group(1))
+    return default
+
+
+def _retrieve(question: str, relevant_players: list[str], player_names: dict, search_terms: list[str], days: int, limit: int = 10) -> str:
+    """
+    Retriever mode: fetch matching events from the KG and return a formatted
+    article list. No LLM synthesis — just raw sources ranked by significance.
+    """
+    from graph.queries import get_events_for_player, search_events
+
+    fetch_per_player = max(limit * 2, 30)
+    all_events = []
+    seen_keys = set()
+
+    for player_key in relevant_players:
+        events = get_events_for_player(player_key, limit=fetch_per_player, days=days)
+        if search_terms:
+            searched = search_events(search_terms, player_key=player_key, limit=fetch_per_player)
+            events_by_key = {e.get("_key"): e for e in events}
+            for e in searched:
+                if e.get("_key") not in events_by_key:
+                    events.append(e)
+
+        for e in events:
+            key = e.get("_key")
+            if key and key not in seen_keys:
+                e["_player_name"] = player_names.get(player_key, player_key)
+                all_events.append(e)
+                seen_keys.add(key)
+
+    if not all_events:
+        return "No matching articles found in the knowledge graph for this query."
+
+    # Sort by date desc, then significance desc as tiebreaker
+    all_events.sort(key=lambda e: (e.get("published_date") or "", e.get("significance_score") or 0), reverse=True)
+    all_events = all_events[:limit]
+
+    lines = [f"**Top {len(all_events)} articles** for: _{question}_\n"]
+    for i, e in enumerate(all_events, 1):
+        sources = e.get("sources", [])
+        url = sources[0].get("url", "") if sources else ""
+        source_name = sources[0].get("name", "") if sources else ""
+        date = (e.get("published_date") or "")[:10]
+        sig = e.get("significance_score", "?")
+        event_type = (e.get("event_type") or "other").replace("_", " ").title()
+        player = e.get("_player_name", "")
+        title = e.get("title", "Untitled")
+
+        title_md = f"[{title}]({url})" if url else title
+        meta = " · ".join(filter(None, [player, event_type, source_name, date, f"Significance: {sig}/10"]))
+        lines.append(f"{i}. {title_md}  \n   _{meta}_")
+
+    return "\n".join(lines)
+
+
+def ask(question: str, history: list[dict] = None, days_filter: int = None, mode: str = "synthesizer") -> str:
     """
     Main entry point for the chat interface.
     Takes a natural language question and returns a markdown-formatted answer.
     history: list of {"role": "user"|"assistant", "content": str} from prior turns.
     days_filter: if provided, overrides the LLM-inferred time frame (None = all time).
+    mode: "synthesizer" (default) or "retriever" (raw article list, no LLM synthesis).
     """
     players = _load_players()
 
-    ALL_PLAYERS = ["openai", "anthropic", "google", "meta", "microsoft"]
+    ALL_PLAYERS = ["openai", "anthropic", "google", "meta", "microsoft", "nvidia"]
 
     # Step 1: Decompose
     plan = _decompose(question)
@@ -156,6 +218,12 @@ def ask(question: str, history: list[dict] = None, days_filter: int = None) -> s
     search_terms = plan.get("search_terms", [])
     # Sidebar filter overrides LLM-inferred time frame when explicitly set
     days = days_filter if days_filter is not None else plan.get("time_frame_days", 90)
+
+    # Retriever mode: skip synthesis, return raw article list
+    if mode == "retriever":
+        limit = _parse_result_limit(question, default=10)
+        print(f"[QueryManager] Retriever mode — fetching top {limit} articles for {relevant_players}")
+        return _retrieve(question, relevant_players, players, search_terms, days, limit=limit)
 
     # Step 2: Route to Research Leads + live web search in parallel
     briefs = []

@@ -10,11 +10,11 @@ class Settings(BaseSettings):
     CLAUDE_MODEL: str = "claude-sonnet-4-6"
     OPENAI_MODEL: str = "gpt-4o"
 
-    # ArangoDB
-    ARANGO_HOST: str = "http://localhost:8529"
-    ARANGO_DB: str = "market_intel"
-    ARANGO_USER: str = "root"
-    ARANGO_PASSWORD: str = "password"
+    # Neo4j
+    NEO4J_URI: str = "bolt://localhost:7687"
+    NEO4J_USER: str = "neo4j"
+    NEO4J_PASSWORD: str = "password"
+    NEO4J_DATABASE: str = "neo4j"
 
     # News APIs
     NEWS_API_KEY: str = ""
